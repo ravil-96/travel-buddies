@@ -1,5 +1,16 @@
 version: '3'
 services:
+  socket:
+    build: 
+      ./socket
+    ports:
+        - "3000:3000"
+    volumes:
+        - type: bind
+          source: ./socket
+          target: /code
+    depends_on:
+        - api
   api:
     build: 
       ./api
