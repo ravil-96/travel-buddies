@@ -1,0 +1,26 @@
+services:
+    api:
+      container_name: dev_api
+      ports: 
+        - 5000:5000
+      environment: 
+        - PGUSER=user
+        - PGHOST=db
+        - PGPASSWORD=password
+        - PGDATABASE=myDb
+        - PGPORT=5432
+        - NODE_ENV=development
+      depends_on:
+        - db
+      command: bash -c "FLASK_APP=app.py && python -m pip install -r requirements.txt  && python -m flask run"
+  
+    db:
+      container_name: dev_db
+      volumes:
+        - "dbdata:/var/lib/postgresql/data"
+      environment: 
+        - POSTGRES_DB=myDb
+        - POSTGRES_USER=user
+        - POSTGRES_PASSWORD=password
+volumes:
+    dbdata:
