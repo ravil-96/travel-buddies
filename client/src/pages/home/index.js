@@ -4,7 +4,7 @@ import { Login } from '../../components'
 function Home(){
     return ( 
     <div>   
-    <h1>Home page</h1>
+    <h1>Travel Buddies 🌎 </h1>
     <Login />
     </div> 
     )
