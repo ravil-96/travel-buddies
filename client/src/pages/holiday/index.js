@@ -31,7 +31,7 @@ function Holiday() {
 
   return (
     <div>
-      <h1>Profile page</h1>;
+      <h1>My holiday</h1>;
       <form onSubmit={fetchLocation}>
         <input type="search" onChange={handleSearch} value={location} />
         <input type="submit" value="search" />
