@@ -1,15 +1,15 @@
-const mapMarkerState = {
+const markersState = {
     markers: [
         { id: 0, name: 'Empire State Building', comment: '', username: 'Beth'},
         { id: 1, name: 'Rockefeler Centre', comment: '', username: 'Michael'},
         { id: 2, name: 'Brooklyn Bridge', comment: '', username: 'Semhar'}
     ],
-    filters: {
-        date: ['oldest', 'latest']
-    }
+    // filters: {
+    //     date: ['oldest', 'latest']
+    // }
 } 
 
-const markerReducer = (state=mapMarkerState, action) => {
+const markersReducer = (state=markersState, action) => {
     switch(action.type) {
         case 'LOAD_MARKER':
             return ({
@@ -20,4 +20,4 @@ const markerReducer = (state=mapMarkerState, action) => {
             return state;
     }
 }
-export default markerReducer
+export default markersReducer
