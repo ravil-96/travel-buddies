@@ -5,8 +5,9 @@ name = "pypi"
 
 [packages]
 flask = "*"
+flask-cors = "*
 gunicorn = "*"
-flask-cors = "*"
+flask-sqlalchemy = "*"
 pytest = "*"
 werkzeug = "*"
 
@@ -15,7 +16,7 @@ pytest = "*"
 pytest-cov = "*"
 
 [requires]
-python_version = "3.10"
+python_version = "3.9"
 
 [scripts]
 dev = "bash -c \"export FLASK_ENV='development' && flask run\""
