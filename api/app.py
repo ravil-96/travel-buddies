@@ -37,4 +37,14 @@ db.session.commit()
 
 @app.route('/')
 def home():
-    return jsonify({'message': 'hello'}), 200
+    return jsonify({'msg': 'hello'}), 200
+
+@app.route('/test', methods=['POST', 'GET'])
+def test():
+    if request.method == 'POST':
+        newUser = Users(username="test", email="test@test.com")
+        db.session.add(newUser)
+        db.session.commit()
+        return jsonify({'msg': 'success'}), 200   
+    else: 
+        return jsonify({'msg': 'you got it'}), 200   
