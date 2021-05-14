@@ -1,7 +1,14 @@
 import React from 'react'
+import { Login } from '../../components'
 
 function Home(){
-    return <h1>Home page</h1>
+    return ( 
+    <div>   
+    <h1>Travel Buddies 🌎 </h1>
+    <Login />
+    <p>or register</p>
+    </div> 
+    )
 }
 
-export default Home
+export default Home;
