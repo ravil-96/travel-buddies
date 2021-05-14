@@ -7,8 +7,9 @@
         - starts pg database called myDb, interact with `bash _scripts/psql`
         - starts API at `localhost:5000`
         - starts Socket server at `localhost:3000`
-- end processes with `docker compose down` or `ctrl-c` or `bash _scripts/teardown` 
 
 - start client server
     - `npm run dev`
         - access at `localhost:8080` 
+
+- end docker processes with `docker compose down` or `ctrl-c` or `bash _scripts/teardown` 
