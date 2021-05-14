@@ -9,7 +9,7 @@ const mapMarkerState = {
     }
 } 
 
-const mapMarkerReducer = (state=mapMarkerState, action) => {
+const markerReducer = (state=mapMarkerState, action) => {
     switch(action.type) {
         case 'LOAD_MARKER':
             return ({
@@ -20,4 +20,4 @@ const mapMarkerReducer = (state=mapMarkerState, action) => {
             return state;
     }
 }
-export default mapMarkerReducer
+export default markerReducer
