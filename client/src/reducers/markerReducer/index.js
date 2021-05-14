@@ -8,3 +8,16 @@ const mapMarkerState = {
         date: ['oldest', 'latest']
     }
 } 
+
+const mapMarkerReducer = (state=mapMarkerState, action) => {
+    switch(action.type) {
+        case 'LOAD_MARKER':
+            return ({
+                ...state,
+                marker: action.payload,
+             })
+        default:
+            return state;
+    }
+}
+export default mapMarkerReducer
