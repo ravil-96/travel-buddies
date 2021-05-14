@@ -4,9 +4,10 @@ WORKDIR /code
 ENV FLASK_APP=app.py
 ENV FLASK_ENV=development
 ENV FLASK_RUN_HOST=0.0.0.0
+ENV FLASK_RUN_PORT=3000
 RUN apk add g++ --no-cache gcc musl-dev linux-headers
 COPY requirements.txt requirements.txt
 RUN pip install -r requirements.txt
-EXPOSE 5000
+EXPOSE 3000
 COPY . .
-CMD ["flask", "run"]
+CMD ["python", "app.py"]
