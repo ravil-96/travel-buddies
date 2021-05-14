@@ -7,6 +7,8 @@
         - starts pg database called myDb, interact with `bash _scripts/psql`
         - starts API at `localhost:5000`
         - starts Socket server at `localhost:3000`
+    - run `docker exec -it travel-buddies_api_1 sh` to start an interactive shell for API
+    - run `python models.py` to create db and models
 
 - start client server
     - `npm run dev`
