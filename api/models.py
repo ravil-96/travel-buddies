@@ -28,7 +28,7 @@ def auth_user(new_name, new_password):
         return False
 
 def jwt_user(username):
-    encoded = jwt.encode({"username": username}, key, algorithm="HS256")
+    encoded = jwt.encode({"username": username}, 'mynewsecret', algorithm="HS256")
     return encoded
 
 if __name__ == "__main__":

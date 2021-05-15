@@ -2,7 +2,7 @@ from flask import request, jsonify, request
 
 from models import Users, create_user, auth_user, jwt_user
 from app import app
-
+import jwt
 
 @app.route('/')
 def index():
@@ -22,6 +22,12 @@ def login():
         data = request.get_json()
         res = auth_user(data["username"],data["password"])
         if res:
-            return jwt_user(data["username"])
+            return jsonify({"msg": f'hello {data["username"]}', "token": jwt_user(data["username"])})
         else:
-            return jsonify({'msg': f'{res}'}), 200
+            return jsonify({'msg': f'{res}',}), 200
+
+@app.route('/protected/<username>', methods=['GET'])
+def protected(username):
+    auth = request.headers["Authorization"].split()[1]
+    token = jwt.decode(auth, 'mynewsecret', algorithms=["HS256"])
+    return jsonify({'msg': f'{token}'}), 200
