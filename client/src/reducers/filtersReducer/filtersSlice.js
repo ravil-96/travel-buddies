@@ -1,6 +1,6 @@
 const initialState = {
     filters: {
-        date: ['oldest', 'latest']
+        date: ['oldest', 'recent']
         }
 }
 

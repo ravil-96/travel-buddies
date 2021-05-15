@@ -1,6 +1,6 @@
 const initialState = {
     markers: [
-        { id: 0, long: '', lat: '', name: 'Empire State Building', comment: '', username: 'Beth'},
+        { id: 0, long: '-73.985664', lat: '40.748441', name: 'Empire State Building', comment: 'Hey! I wanna be here next year!', username: 'Beth'},
         { id: 1, name: 'Rockefeller Centre', comment: '', username: 'Michael'},
         { id: 2, name: 'Brooklyn Bridge', comment: '', username: 'Semhar'}
     ],
