@@ -1,11 +1,11 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
+import { useSelector, shallowEqual } from 'react-redux'
 import MarkerListItem from '../Marker/MarkerListItem'
 
 const selectMarkersIds = state => state.markers.map(marker => marker.id)
 
 const MarkerList = () => {
-    const markersIds = useSelector(selectMarkersIds)
+    const markersIds = useSelector(selectMarkersIds, shallowEqual)
     const markersCreated = useSelector(state => {
         const markersTotal = state.markers
         return markersTotal.length
