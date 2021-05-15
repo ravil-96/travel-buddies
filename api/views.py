@@ -29,10 +29,13 @@ def login():
 
 @app.route('/users/<username>', methods=['GET'])
 def user(username):
-    auth = request.headers["Authorization"].split()[1]
-    token = jwt.decode(auth, 'mynewsecret', algorithms=["HS256"])
-    if token["username"] == username:
-        user = Users.query.filter_by(username=username).first()
-        return jsonify({'msg': f'{token}', 'user' : f'{user}'}), 200
-    else:
-        return jsonify({'msg': 'err'})
+    try:
+        auth = request.headers["Authorization"].split()[1]
+        token = jwt.decode(auth, 'mynewsecret', algorithms=["HS256"])
+        if token["username"] == username:
+            user = Users.query.filter_by(username=username).first()
+            return jsonify({'msg': f'{token}', 'user' : f'{user}'}), 200
+        else:
+            return jsonify({'msg': 'not authorized'}), 401 
+    except Exception as e: 
+            return jsonify({'msg': f'{e}'}), 401
