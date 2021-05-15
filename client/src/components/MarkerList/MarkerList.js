@@ -2,10 +2,10 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 import MarkerListItem from '../Marker/MarkerListItem'
 
-const selectMarkers = state => state.markers
+const selectMarkersIds = state => state.markers.map(marker => marker.id)
 
 const MarkerList = () => {
-    const markers = useSelector(selectMarkers)
+    const markersIds = useSelector(selectMarkersIds)
     const markersCreated = useSelector(state => {
         const markersTotal = state.markers
         return markersTotal.length
@@ -13,8 +13,8 @@ const MarkerList = () => {
 
     const { dateFilter } = useSelector(state => state.filters)
 
-    const renderedListItems = markers.map(marker => {
-        return <MarkerListItem key={marker.id} marker={marker} />
+    const renderedListItems = markersIds.map(markerId => {
+        return <MarkerListItem key={markerid} id={markerId} />
     })
 
     return (
