@@ -2,14 +2,12 @@ import React, { useState } from "react";
 import axios from "axios";
 
 function Holiday() {
-  const [location, setLocation] = useState();
+  const [location, setLocation] = useState('');
 
  const apikey = "d2acbb92755fc59c7e8cebb0e4dc2282";
 
   function handleSearch(e) {
-    console.log(e.target.value);
     setLocation(e.target.value);
-    fetchLocation();
   }
 
   async function fetchLocation(e) {
@@ -31,7 +29,7 @@ function Holiday() {
 
   return (
     <div>
-      <h1>My holiday</h1>;
+      <h1>My holiday</h1>
       <form onSubmit={fetchLocation}>
         <input type="search" onChange={handleSearch} value={location} />
         <input type="submit" value="search" />

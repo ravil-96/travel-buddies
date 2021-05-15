@@ -1,10 +1,15 @@
 import React, {useState} from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import { RegisterModal } from ".."
 import { useSelector, useDispatch } from "react-redux";
 
 function Login() {
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
   const [email, setEmail] = useState("")
+  const [username, setUsername] = useState("")
   const [password, setPassword] = useState("");
 
 
@@ -12,33 +17,33 @@ function Login() {
 
 const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(login(email, password))
+    dispatch(login(username, password))
 }
 
+const handleUsernameEntry = (e) => {
+  setUsername(e.target.value)
+}
 const handleEmailEntry = (e) => {
-  console.log(e.target.value);
   setEmail(e.target.value)
 }
-
 const handlePasswordEntry = (e) => {
-  console.log(e.target.value)
   setPassword(e.target.value);
 };
 
   return (
+    <>
     <div>
-      <h5>Login</h5>
       <Form onSubmit={handleSubmit}>
-        <Form.Group controlId="formBasicEmail">
-          <Form.Label>Email address</Form.Label>
+        <Form.Group controlId="formBasicUsername">
+          <Form.Label>Username</Form.Label>
           <Form.Control
-            type="email"
-            placeholder="Enter email"
-            onChange={handleEmailEntry}
+            type="text"
+            placeholder="Enter username"
+            onChange={handleUsernameEntry}
           />
-          <Form.Text className="text-muted">
+          {/* <Form.Text className="text-muted">
             We'll never share your email with anyone else.
-          </Form.Text>
+          </Form.Text> */}
         </Form.Group>
 
         <Form.Group controlId="formBasicPassword">
@@ -52,11 +57,16 @@ const handlePasswordEntry = (e) => {
         {/* <Form.Group controlId="formBasicCheckbox">
           <Form.Check type="checkbox" label="Check me out" />
         </Form.Group> */}
-        <Button variant="success" type="submit">
+        <Button variant="primary" type="submit">
           Login
+        </Button>
+        <Button onClick={handleShow} variant="success">
+          Create New Account
         </Button>
       </Form>
     </div>
+    <RegisterModal show={show} handleClose={handleClose} />
+    </>
   );
 }
 export default Login;
