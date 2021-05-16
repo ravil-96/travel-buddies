@@ -11,8 +11,14 @@ const userReducer = (state = { logged_in: false }, action) => {
         ...state,
         err: false,
         logged_in: true,
-        user: action.payload
+        user: action.payload.msg,
+        token: action.payload.token
       };
+      case "ADD_SOCKET":
+        return {
+          ...state,
+          socket: action.payload
+        };
     default:
       return state;
   }

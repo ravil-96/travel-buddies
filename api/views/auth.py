@@ -19,7 +19,7 @@ def register():
         data = request.get_json()
         create_user(data["username"], data["email"], data["password"])
         res = auth_user(data["username"],data["password"])
-        return jsonify({"msg": f'hello {data["username"]}', "token": jwt_user(data["username"])})
+        return jsonify({"msg": f'{data["username"]}', "token": jwt_user(data["username"])})
     except Exception as e: 
         return jsonify({'msg': f'{e}'}), 401
 
@@ -29,7 +29,7 @@ def login():
         data = request.get_json()
         res = auth_user(data["username"],data["password"])
         if res:
-            return jsonify({"msg": f'hello {data["username"]}', "token": jwt_user(data["username"])})
+            return jsonify({"msg": f'{data["username"]}', "token": jwt_user(data["username"])})
         else:
             return jsonify({'msg': f'{res}',}), 200
 
