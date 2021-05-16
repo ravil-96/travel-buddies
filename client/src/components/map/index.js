@@ -10,9 +10,10 @@ import {
 // this component maps an array of marker data (position, title, desc) to react-leaflet components
 // currently passed as a prop but we should move that logic to redux
 function MapContent({ data }) {
-  return data.map((d) => {
+  
+  return data.map((d, i) => {
     return (
-      <Marker position={d.position}>
+      <Marker key={i} position={d.position}>
         <Popup>
           {d.title} <br /> {d.desc}
         </Popup>
@@ -55,6 +56,8 @@ function MyMap() {
     const newData = [...data, newMarker];
     setData(newData);
   }
+
+  
 
   return (
     <>
