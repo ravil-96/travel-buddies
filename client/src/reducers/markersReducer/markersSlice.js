@@ -1,10 +1,8 @@
-const initialState = {
-    markers: [
-        { id: 0, long: '', lat: '', name: 'Empire State Building', comment: '', username: 'Beth'},
-        { id: 1, name: 'Rockefeller Centre', comment: '', username: 'Michael'},
-        { id: 2, name: 'Brooklyn Bridge', comment: '', username: 'Semhar'}
-    ],
-} 
+const initialState = [
+        { position: [0,1], title: 'Empire State Building', desc: '...'},
+        { position: [0,2], title: 'Rockefeller Centre', desc: '...'},
+        { position: [0,3], title: 'Brooklyn Bridge', desc: '...'}
+    ]
 
 function nextMarkerId(markers) {
     const maxId = markers.reduce((maxID, marker) => Math.max(marker.id, maxId), -1)
@@ -13,20 +11,13 @@ function nextMarkerId(markers) {
 
 const markersReducer = (state=initialState, action) => {
     switch(action.type) {
-        case 'markers/markerAdded': {
+        case 'ADD_MARKER': {
             return [
                 ...state,
-                {
-                id: nextMarkerId(state),
-                long: action.payload,
-                lat: action.payload,
-                name: action.payload,
-                comment: action.payload,
-                username: action.payload
-                }
+                {position:action.payload.location, title:action.payload.title, desc:action.payload.desc}
             ] 
         }    
-        case 'markers/markerSelected': {
+        case 'SELECT_MARKER': {
             return state.map((marker) => {
                 if (marker.id !== action.payload) {
                     return marker

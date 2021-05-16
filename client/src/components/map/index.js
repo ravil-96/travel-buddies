@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux"
 import {
   MapContainer,
   TileLayer,
@@ -9,8 +10,8 @@ import {
 
 // this component maps an array of marker data (position, title, desc) to react-leaflet components
 // currently passed as a prop but we should move that logic to redux
-function MapContent({ data }) {
-  
+function MapContent() {
+  const data = useSelector((state) => state.markers)
   return data.map((d, i) => {
     return (
       <Marker key={i} position={d.position}>
@@ -28,36 +29,16 @@ function AddMarker({ handleClick }) {
   const map = useMapEvents({
     click: (e) => {
       const { lat, lng } = e.latlng;
-      handleClick({ position: [lat, lng], title: "new marker", desc: "..." });
+      handleClick([lat, lng]);
     },
   });
   return null;
 }
 
 // the parent componenet that renders the leaflet map
-function MyMap() {
+function MyMap( { handleClick } ) {
   // some initial data that is sent as prop to child componenet and mapped to leaflet markers
-  const [data, setData] = useState([
-    {
-      title: "London",
-      desc: "city of London",
-      position: [51.505, -0.09],
-    },
-    {
-      title: "London Bridge",
-      desc: "city of Londons bridge",
-      position: [51.205, -0.03],
-    },
-  ]);
-
-  // the function to update state which is sent to the AddMarker componenet
-  // again this can be moved elsewhere as it becomes more complex
-  function handleClick(newMarker) {
-    const newData = [...data, newMarker];
-    setData(newData);
-  }
-
-  
+  const [data, setData] = useState([]);
 
   return (
     <>
