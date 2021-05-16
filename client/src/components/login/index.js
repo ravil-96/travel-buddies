@@ -3,6 +3,8 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { RegisterModal } from ".."
 import { useSelector, useDispatch } from "react-redux";
+import { userLogin } from "../../actions"
+import { useHistory } from 'react-router-dom'
 
 function Login() {
   const [show, setShow] = useState(false);
@@ -15,9 +17,13 @@ function Login() {
 
   const dispatch = useDispatch();
 
-const handleSubmit = (e) => {
+  const history = useHistory()
+const handleSubmit = async (e) => {
     e.preventDefault();
-    dispatch(login(username, password))
+    const res = await dispatch(userLogin(username, password))
+    if (res) {
+      history.push("/profile");
+    }
 }
 
 const handleUsernameEntry = (e) => {
