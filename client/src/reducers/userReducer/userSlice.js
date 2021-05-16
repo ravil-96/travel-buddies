@@ -1,4 +1,4 @@
-const loginReducer = (state = { logged_in: false }, action) => {
+const userReducer = (state = { logged_in: false }, action) => {
   switch (action.type) {
     case "SET_ERROR":
         return {
@@ -18,4 +18,4 @@ const loginReducer = (state = { logged_in: false }, action) => {
   }
 };
 
-export default loginReducer;
+export default userReducer;
