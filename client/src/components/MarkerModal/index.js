@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
+import { useParams } from "react-router-dom"
 import { addMarker } from "../../actions"
 import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
@@ -9,6 +10,7 @@ function MarkerModal({ show, handleClose, location }) {
   const dispatch = useDispatch()
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
+  const { id } = useParams()
 
   const handleTitleEntry = (e) => {
     setTitle(e.target.value);
@@ -17,9 +19,10 @@ function MarkerModal({ show, handleClose, location }) {
     setDesc(e.target.value);
   };
 
+  const mySocket = useSelector(state => state.user.socket)
   function handleCreate(e){
     e.preventDefault()
-    dispatch(addMarker({location, title, desc}))
+    mySocket.emit("add marker", {room: id, marker: {location, title, desc}});
     handleClose()
   }
 

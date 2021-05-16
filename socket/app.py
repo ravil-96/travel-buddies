@@ -35,5 +35,10 @@ def test_disconnect():
     emit('connected sockets', list(filter(lambda cs: cs['room'] == room, conected_sockets)), to=room)
     leave_room(room)
 
+@socketio.on('add marker')
+def add_marker(data):
+    emit('server marker', data['marker'], to=data['room'])
+
+
 if __name__ == '__main__':
     socketio.run(app, host='0.0.0.0', port="3000")

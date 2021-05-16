@@ -38,17 +38,14 @@ function AddMarker({ handleClick }) {
 // the parent componenet that renders the leaflet map
 function MyMap( { handleClick } ) {
   // some initial data that is sent as prop to child componenet and mapped to leaflet markers
-  const [data, setData] = useState([]);
 
   return (
     <>
       <MapContainer
         onclick={() => console.log("hello")}
         style={{ height: "480px", width: "100%" }}
-        // default center point of map, we can have a default and then grab it from any markers that have been added
-        center={[51.505, -0.09]}
-        // default zoom level, smaller = zoomed out more 
-        zoom={5}
+        center={[0,0]}
+        zoom={2}
         scrollWheelZoom={true}
       >
         <TileLayer
@@ -56,7 +53,7 @@ function MyMap( { handleClick } ) {
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
         <AddMarker handleClick={handleClick} />
-        <MapContent data={data} />
+        <MapContent />
       </MapContainer>
     </>
   );

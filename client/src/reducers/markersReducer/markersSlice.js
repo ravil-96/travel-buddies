@@ -1,8 +1,4 @@
-const initialState = [
-        { position: [0,1], title: 'Empire State Building', desc: '...'},
-        { position: [0,2], title: 'Rockefeller Centre', desc: '...'},
-        { position: [0,3], title: 'Brooklyn Bridge', desc: '...'}
-    ]
+const initialState = []
 
 function nextMarkerId(markers) {
     const maxId = markers.reduce((maxID, marker) => Math.max(marker.id, maxId), -1)
