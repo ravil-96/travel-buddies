@@ -12,10 +12,13 @@ def index():
 
 @app.route('/register', methods=['POST'])
 def register():
-    if request.method == 'POST':    
+    try:
         data = request.get_json()
         create_user(data["username"], data["email"], data["password"])
-        return jsonify({'msg': 'success'}), 200
+        res = auth_user(data["username"],data["password"])
+        return jsonify({"msg": f'hello {data["username"]}', "token": jwt_user(data["username"])})
+    except Exception as e: 
+        return jsonify({'msg': f'{e}'}), 401
 
 @app.route('/login', methods=['POST'])
 def login():
