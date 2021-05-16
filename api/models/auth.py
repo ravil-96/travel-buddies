@@ -1,7 +1,6 @@
 from app import db
 import bcrypt
 import jwt
-db.metadata.clear()
 key='supersecret'
 
 class Users(db.Model):

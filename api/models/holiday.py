@@ -1,5 +1,4 @@
 from app import db
-db.metadata.clear()
 
 class Holidays(db.Model):
     id = db.Column(db.Integer, primary_key=True)
