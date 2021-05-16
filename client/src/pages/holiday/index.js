@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { MapSearch, Weather } from "../../components";
+import { useSocket } from "../../customHooks"
 
 function Holiday() {
 
+  useSocket('1234')
+
   return (
-    <div>
+    <>
       <Weather />
       <h1>Holiday to New York🗽</h1>
       <div>
@@ -18,9 +21,8 @@ function Holiday() {
         src="https://assets.website-files.com/5e832e12eb7ca02ee9064d42/5f7db426b676b95755fb2844_Group%20805.jpg"
         height="200px"
       />
-      
       <MapSearch />
-    </div>
+    </>
   );
 }
 

@@ -7,7 +7,7 @@ function Navbar() {
       <NavLink exact to="/" activeClassName="current">
         Home
       </NavLink>
-      <NavLink exact to="/holidays" activeClassName="current">
+      <NavLink exact to="/holidays/123" activeClassName="current">
         Holidays
       </NavLink>
       <NavLink to="/profile" activeClassName="current">

@@ -48,3 +48,5 @@ export const userRegister = (username, email, password) => {
        }
    }
 }
+
+export const addSocket = (socket)=> ({type: 'ADD_SOCKET', payload: socket})  
