@@ -18,6 +18,7 @@ function Login() {
   const dispatch = useDispatch();
 
   const history = useHistory()
+
 const handleSubmit = async (e) => {
     e.preventDefault();
     const res = await dispatch(userLogin(username, password))
@@ -43,18 +44,17 @@ const handlePasswordEntry = (e) => {
         <Form.Group controlId="formBasicUsername">
           <Form.Label>Username</Form.Label>
           <Form.Control
+            required
             type="text"
             placeholder="Enter username"
             onChange={handleUsernameEntry}
           />
-          {/* <Form.Text className="text-muted">
-            We'll never share your email with anyone else.
-          </Form.Text> */}
         </Form.Group>
 
         <Form.Group controlId="formBasicPassword">
           <Form.Label>Password</Form.Label>
           <Form.Control
+            required
             type="password"
             placeholder="Password"
             onChange={handlePasswordEntry}

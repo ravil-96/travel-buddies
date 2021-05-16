@@ -24,3 +24,27 @@ export const userLogin = (username, password) => {
        }
    }
 }
+
+export const userRegister = (username, email, password) => {
+   return async (dispatch) => {
+       try {
+         let { data } = await axios.post('http://localhost:5000/register', {
+            username: username,
+            email: email,
+            password: password
+          })
+          dispatch({
+            type: 'USER_LOGIN',
+            payload: data
+        })
+           return true          
+       } catch (err) {
+          console.warn(err)
+           dispatch({
+               type: 'SET_ERROR',
+               payload: err.message
+           })
+           return false
+       }
+   }
+}

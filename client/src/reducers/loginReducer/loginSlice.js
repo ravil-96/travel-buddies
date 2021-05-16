@@ -9,6 +9,7 @@ const loginReducer = (state = { logged_in: false }, action) => {
     case "USER_LOGIN":
       return {
         ...state,
+        err: false,
         logged_in: true,
         user: action.payload
       };
