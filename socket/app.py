@@ -9,10 +9,6 @@ socketio = SocketIO(app, cors_allowed_origins="*")
 
 conected_sockets = []
 
-@socketio.on('my event')
-def handle_my_custom_event(json):
-    emit('my response', json, broadcast=True)
-
 @socketio.on('join')
 def on_join(data):
     username = data['username']
@@ -24,7 +20,7 @@ def on_join(data):
         "room": data['room']
     }) 
     emit('join response', data, to=room)
-    emit('connected sockets', conected_sockets, to=room)
+    emit('connected sockets', list(filter(lambda cs: cs['room'] == room, conected_sockets)), to=room)
 
 @socketio.on('disconnect')
 def test_disconnect():
@@ -36,7 +32,7 @@ def test_disconnect():
             del conected_sockets[i]
             break
     emit('leave response', {"username":username, "room":room}, to=room)
-    emit('connected sockets', conected_sockets, to=room)
+    emit('connected sockets', list(filter(lambda cs: cs['room'] == room, conected_sockets)), to=room)
     leave_room(room)
 
 if __name__ == '__main__':
