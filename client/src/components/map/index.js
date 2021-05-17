@@ -43,10 +43,12 @@ function MyMap( { handleClick } ) {
     <>
       <MapContainer
         onclick={() => console.log("hello")}
-        style={{ height: "480px", width: "100%" }}
+        style={{ height: "400px", width: "75%", margin: "2rem" }}
         center={[0,0]}
         zoom={2}
         scrollWheelZoom={true}
+       
+      
       >
         <TileLayer
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'

@@ -1,0 +1,20 @@
+.card-container-wrapper{
+    /* scroll */
+display: flex;
+    flex-direction: column;
+    position: relative;
+    left: 45rem;
+    bottom: 30rem;
+    justify-content: right;
+    width: 25%;
+    overflow:scroll
+}
+
+.card-body{
+    padding: .75rem;
+    font-size: .7rem
+}
+
+.card{
+    margin:1rem
+}

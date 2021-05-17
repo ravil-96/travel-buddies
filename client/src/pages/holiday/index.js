@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux"
-import { MapSearch, Weather, MyMap, MarkerModal } from "../../components";
+import { MapSearch, Weather, MyMap, MarkerModal, CardContainer } from "../../components";
 import { useParams } from "react-router-dom"
 import { useSocket } from '../../customHooks'
 
@@ -32,6 +32,7 @@ function Holiday() {
       <MyMap handleClick={handleClick}/>
       <MarkerModal show={show} handleClose={handleClose} location={markerLocation} />
       <MapSearch handleClick={handleClick} />
+      <CardContainer />
     </>
   );
 }
