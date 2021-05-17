@@ -42,4 +42,5 @@ const markersReducer = (state=initialState, action) => {
             return state;
     }
 }
+
 export default markersReducer

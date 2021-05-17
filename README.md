@@ -16,4 +16,4 @@
     - `npm run dev`
         - access at `localhost:8080` 
 
-- end docker processes with `docker compose down` or `ctrl-c` or `bash _scripts/teardown` 
+- end docker processes with `docker compose down` or `ctrl-c` or `bash _scripts/teardown.sh` 

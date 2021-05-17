@@ -4,7 +4,6 @@ export const addMarker = (marker)=> ({type: 'ADD_MARKER', payload: marker})
 
 export const clearMarkers = () => ({type: 'CLEAR_MARKERS'})  
 
-
 export const loadUserHolidays = (id) => {
     return async (dispatch) => {
         try {
