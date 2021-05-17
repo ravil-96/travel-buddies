@@ -11,7 +11,7 @@ function MarkerCards() {
           return (
             <Card>
             <Card.Body>
-              <Card.Subtitle style={{whiteSpace: 'nowrap'}} className="mb-2 text-muted">
+              <Card.Subtitle className="mb-2 text-muted">
                 {d.title}
               </Card.Subtitle>
               <Card.Text>

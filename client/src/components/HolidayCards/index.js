@@ -15,7 +15,7 @@ function HolidayCards() {
       <Card>
         <Card.Body>
           <Card.Subtitle className="mb-2 text-muted">
-            <Link style={{whiteSpace: "nowrap"}} to={`/holidays/${d.id}`}>{d.title}</Link>
+            <Link to={`/holidays/${d.id}`}>{d.title}</Link>
           </Card.Subtitle>
         </Card.Body>
       </Card>

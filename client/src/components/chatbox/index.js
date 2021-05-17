@@ -1,39 +1,66 @@
 import React, {useState} from "react";
-// import openLauncher from "../../../public/images/launcher_button.png";
-// import close from '../../../public/images/clear-button.png';
-//  import sendButtonIcon from "../../../public/images/send_button.png";
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
+import { useSelector, useDispatch } from 'react-redux'
 import "./index.css";
+
+function Message({ username, content }){
+  return (
+        <div className={`message ${username === 'bob' ? 'me' : 'other'}`}>
+          <small>{username}</small>
+          <div>{content}</div>
+        </div>
+  )
+}
+
+function MessageList(){
+  const data = [
+    {username: 'bob', content: 'hello there!'},
+    {username: 'chris', content: 'hi bob!'},
+    {username: 'steve', content: 'what\'s up! This is a longer message to test long messages - maybe it\'s too long?'}
+  ]
+  const message_list = data.map(d => <Message username={d.username} content={d.content}/>)
+  return message_list
+}
+
+
 
 function ChatBox() {
     const [message, setMessage] = useState("")
-    
 
  function handleSend(e){
     e.preventDefault()
     // console.log(e.target.value)
-    handleInput()
+    // handleInput()
  }
 
 function handleInput(e){
-    console.log(e.target.value);
     setMessage(e.target.value);
 }
 
   return (
-      <div className="chatApp__room">
-        <div className="chatApp_conv">
-          <div className="chatApp_convTimeline">
+    <div className="chat-box">
+      <div className="message-box">
+        <MessageList />
+      </div>
 
-            <div className="chatApp_convMessageItem--left">
-              <div className="chatApp__convMessageValue">hello?</div>
-            </div>
+        <Form>
+          <Form.Group style={{display: 'flex'}}>
+            <Form.Control
+              type="text"
+              placeholder="message"
+              onChange={handleInput}
+            />
 
-            <div className="chatApp_convMessageItem--right">
-              <div className="chatApp__convMessageValue">hello</div>
-            </div>
-
-          </div>
-        </div>
+            <Button
+              variant="primary"
+              type="submit"
+              onSubmit={(e) => handleSend(e)}
+            >
+              Send
+            </Button>
+          </Form.Group>
+        </Form>
       </div>
   );
 }

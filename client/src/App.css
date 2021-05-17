@@ -5,8 +5,10 @@
 }
 
 .card-container-wrapper {
-    max-height: 400px;
-    overflow-y: scroll;
+    height: 400px;
+    overflow-y: auto;
+    width: auto;
+    max-width: 25%
 }
 
 #dropdown-basic-search::after{
