@@ -1,5 +1,5 @@
-from flask import Flask, render_template
-from flask_socketio import SocketIO, send, emit
+from flask import Flask, render_template, request
+from flask_socketio import SocketIO, send, emit, join_room, leave_room
 from flask_cors import CORS
 
 app = Flask(__name__)
@@ -7,17 +7,37 @@ CORS(app)
 app.config['SECRET_KEY'] = 'secret!'
 socketio = SocketIO(app, cors_allowed_origins="*")
 
-@socketio.on('message')
-def handle_message(message):
-    send(message)
+conected_sockets = []
 
-@socketio.on('json')
-def handle_json(json):
-    send(json, json=True)
+@socketio.on('join')
+def on_join(data):
+    username = data['username']
+    room = data['room']
+    join_room(room)
+    conected_sockets.append({
+        "username": data['username'],
+        "id": request.sid,
+        "room": data['room']
+    }) 
+    emit('join response', data, to=room)
+    emit('connected sockets', list(filter(lambda cs: cs['room'] == room, conected_sockets)), to=room)
 
-@socketio.on('my event')
-def handle_my_custom_event(json):
-    emit('my response', json, broadcast=True)
+@socketio.on('disconnect')
+def test_disconnect():
+    disconnecting_socket = next(item for item in conected_sockets if item["id"] == request.sid)
+    username = disconnecting_socket['username']
+    room = disconnecting_socket['room']
+    for i in range(len(conected_sockets)):
+        if conected_sockets[i]['id'] == request.sid:
+            del conected_sockets[i]
+            break
+    emit('leave response', {"username":username, "room":room}, to=room)
+    emit('connected sockets', list(filter(lambda cs: cs['room'] == room, conected_sockets)), to=room)
+    leave_room(room)
+
+@socketio.on('add marker')
+def add_marker(data):
+    emit('server marker', data['marker'], to=data['room'])
 
 
 if __name__ == '__main__':

@@ -1,26 +1,40 @@
-import React from "react";
-import { MapSearch, Weather } from "../../components";
+import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux"
+import { MapSearch, Weather, MyMap, MarkerModal } from "../../components";
+import { useParams } from "react-router-dom"
+import { useSocket } from '../../customHooks'
 
 function Holiday() {
+  const { id } = useParams()
+  useSocket(id)
+  const mySocket = useSelector(state => state.user.socket) 
+
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
+    // the function to update state which is sent to the AddMarker componenet
+  // again this can be moved elsewhere as it becomes more complex
+  const [markerLocation, setMarkerLocation] = useState(['',''])
+  function handleClick(location) {
+    console.log(location)
+    setMarkerLocation(location)
+    handleShow()
+  }
+
+  function handleSocketMarker(){
+      mySocket.emit("add marker");
+  }
+
 
   return (
-    <div>
+    <>
       <Weather />
-      <h1>Holiday to New York🗽</h1>
-      <div>
-        <h4>Details</h4>
-        <p>Dates: 18 Jul - 24 Jul</p>
-        <p>Buddies: Fred, Hugo</p>
-        <p>Weather forecast: too early to tell</p>
-        <p>Notes: Flights need to be booked</p>
-      </div>
-      <img
-        src="https://assets.website-files.com/5e832e12eb7ca02ee9064d42/5f7db426b676b95755fb2844_Group%20805.jpg"
-        height="200px"
-      />
-      
+      <MyMap handleClick={handleClick}/>
+      <MarkerModal show={show} handleClose={handleClose} location={markerLocation} />
       <MapSearch />
-    </div>
+      <button onClick={handleSocketMarker}>click</button>
+    </>
   );
 }
 

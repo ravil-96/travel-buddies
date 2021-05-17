@@ -9,8 +9,6 @@ services:
         - type: bind
           source: ./socket
           target: /code
-    depends_on:
-        - api
   api:
     build: 
       ./api
