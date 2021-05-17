@@ -45,7 +45,6 @@ function MyMap( { handleClick } ) {
     <>
       <MapContainer
         onclick={() => console.log("hello")}
-        style={{ height: "400px", width: "75%", margin: "2rem" }}
         center={[0,0]}
         zoom={2}
         scrollWheelZoom={true}
