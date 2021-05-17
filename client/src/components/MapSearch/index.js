@@ -1,30 +1,68 @@
-import React, {useState} from 'react'
-import axios from 'axios'
+import React, { useState } from "react";
+import axios from "axios";
+import Dropdown from "react-bootstrap/Dropdown";
+import DropdownButton from "react-bootstrap/DropdownButton";
 
-export default function MapSearch(){
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
+
+function DropdownList( { items, handleClick } ){
+  function handleHandleClick(data){
+    console.log(data)
+    handleClick([data.latitude, data.longitude])
+  }
+  const list = items.map((d, i) => {
+    return (
+      <Dropdown.Item onClick={() => handleHandleClick(d)} key={i}>
+        {d.label}
+      </Dropdown.Item>
+    );
+  });
+  return list;
+  
+}
+
+
+export default function MapSearch( { handleClick }) {
   const [location, setLocation] = useState();
+  const [locationData, setLocationData] = useState([])
 
   const apikey = "d2acbb92755fc59c7e8cebb0e4dc2282";
 
-  function handleSearch(e) {
-    console.log(e.target.value);
+  function handleInput(e) {
+    // console.log(e.target.value);
     setLocation(e.target.value);
-    fetchLocation();
   }
 
   async function fetchLocation(e) {
     e.preventDefault();
     const url = `http://api.positionstack.com/v1/forward?access_key=${apikey}&query=${location}`;
-
     const data = await axios.get(url);
-    const latitude = data.data.data[0].latitude;
-    const longitude = data.data.data[0].longitude;
-    console.log(latitude, longitude);
+    setLocationData(data.data.data);
   }
+
   return (
-    <form onSubmit={fetchLocation}>
-      <input type="search" onChange={handleSearch} value={location} />
-      <input type="submit" value="search" />
-    </form>
+    <>
+        <DropdownButton id="dropdown-basic-button" title="Search destination">
+        <Form onSubmit={fetchLocation}>
+        <Form.Group controlId="formBasicUsername">
+          <Form.Control
+            required
+            type="search"
+            placeholder="Enter location"
+            onChange={handleInput}
+          />
+        </Form.Group>
+        <Button style={{display: 'inline'}} variant="primary" type="submit" value="search">
+          Search
+        </Button>
+        </Form>
+          <DropdownList handleClick={handleClick} items={locationData} />
+
+
+      
+
+        </DropdownButton>
+    </>
   );
 }

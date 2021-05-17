@@ -21,10 +21,9 @@ function Holiday() {
     setMarkerLocation(location)
     handleShow()
   }
+  
 
-  function handleSocketMarker(){
-      mySocket.emit("add marker");
-  }
+
 
 
   return (
@@ -32,8 +31,7 @@ function Holiday() {
       <Weather />
       <MyMap handleClick={handleClick}/>
       <MarkerModal show={show} handleClose={handleClose} location={markerLocation} />
-      <MapSearch />
-      <button onClick={handleSocketMarker}>click</button>
+      <MapSearch handleClick={handleClick} />
     </>
   );
 }
