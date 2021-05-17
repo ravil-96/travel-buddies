@@ -39,6 +39,10 @@ def test_disconnect():
 def add_marker(data):
     emit('server marker', data['marker'], to=data['room'])
 
+@socketio.on('client message')
+def add_message(data):
+    emit('server message', data['message'], to=data['room'])
+
 
 if __name__ == '__main__':
     socketio.run(app, host='0.0.0.0', port="3000")
