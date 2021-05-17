@@ -1,11 +1,20 @@
 from app import db
+from dataclasses import dataclass
 
+@dataclass
 class Markers(db.Model):
+    id: int
+    title: str
+    desc: str
+    position_lat: float
+    position_long: float
+    holiday_id: int
+
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(120), nullable=False)
     desc = db.Column(db.String(500), nullable=False)
-    position_lat = db.Column(db.Numeric, nullable=False)
-    position_long = db.Column(db.Numeric, nullable=False)
+    position_lat = db.Column(db.Float, nullable=False)
+    position_long = db.Column(db.Float, nullable=False)
     holiday_id = db.Column(db.Integer, db.ForeignKey('holidays.id'),
         nullable=False)
 
