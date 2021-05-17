@@ -11,3 +11,5 @@ export { default as HolidayCards } from "./HolidayCards";
 export { default as MarkerCards } from "./MarkerCards";
 export { default as CardContainer } from "./CardContainer";
 export { default as ChatBox } from "./ChatBox";
+export { default as AddMember } from "./AddMember";
+

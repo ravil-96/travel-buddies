@@ -2,10 +2,12 @@ import { combineReducers } from 'redux'
 
 import markersReducer from './reducers/markersReducer/markersSlice'
 import userReducer from './reducers/userReducer/userSlice'
+import chatReducer from './reducers/chatReducer'
 
 const rootReducer = combineReducers({
     markers: markersReducer,
-    user: userReducer
+    user: userReducer,
+    chat: chatReducer
 })
 
 export default rootReducer
