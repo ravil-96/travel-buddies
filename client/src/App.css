@@ -7,7 +7,8 @@ display: flex;
     bottom: 30rem;
     justify-content: right;
     width: 25%;
-    overflow:scroll
+    height: 25rem; 
+    overflow: auto
 }
 
 .card-body{
