@@ -1,42 +1,40 @@
-import React, { useState } from "react";
-import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux"
+import { MapSearch, Weather, MyMap, MarkerModal } from "../../components";
+import { useParams } from "react-router-dom"
+import { useSocket } from '../../customHooks'
 
 function Holiday() {
-  const [location, setLocation] = useState();
+  const { id } = useParams()
+  useSocket(id)
+  const mySocket = useSelector(state => state.user.socket) 
 
- const apikey = "d2acbb92755fc59c7e8cebb0e4dc2282";
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
-  function handleSearch(e) {
-    console.log(e.target.value);
-    setLocation(e.target.value);
-    fetchLocation();
+    // the function to update state which is sent to the AddMarker componenet
+  // again this can be moved elsewhere as it becomes more complex
+  const [markerLocation, setMarkerLocation] = useState(['',''])
+  function handleClick(location) {
+    console.log(location)
+    setMarkerLocation(location)
+    handleShow()
   }
 
-  async function fetchLocation(e) {
-    e.preventDefault()
-    const url = `http://api.positionstack.com/v1/forward?access_key=${apikey}&query=${location}`
-    
-    const data  = await axios.get(url)
-    const latitude = data.data.data[0].latitude;
-    const longitude = data.data.data[0].longitude;
-
-    console.log(data.data.data[0])
-    console.log(data.data.data);
-    console.log(latitude, longitude)
+  function handleSocketMarker(){
+      mySocket.emit("add marker");
   }
 
- 
-
-  
 
   return (
-    <div>
-      <h1>My holiday</h1>;
-      <form onSubmit={fetchLocation}>
-        <input type="search" onChange={handleSearch} value={location} />
-        <input type="submit" value="search" />
-      </form>
-    </div>
+    <>
+      <Weather />
+      <MyMap handleClick={handleClick}/>
+      <MarkerModal show={show} handleClose={handleClose} location={markerLocation} />
+      <MapSearch />
+      <button onClick={handleSocketMarker}>click</button>
+    </>
   );
 }
 

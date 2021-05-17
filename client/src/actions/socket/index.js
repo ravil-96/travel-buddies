@@ -1,0 +1,1 @@
+export const addSocket = (socket)=> ({type: 'ADD_SOCKET', payload: socket})  
