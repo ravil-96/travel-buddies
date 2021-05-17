@@ -36,11 +36,16 @@ def get_holidays_by_user(id):
 
 def get_holiday(id):
     markers = []
-    userHolidays = Holidays.query.filter_by(id=id).all()
-    for h in list(userHolidays):
-        markers.append(Markers.query.filter_by(holiday_id=h.id).all())
-    return {"holidays":userHolidays, "markers":markers}
+    holiday = Holidays.query.filter_by(id=id).first()
+    markerData = Markers.query.filter_by(holiday_id=holiday.id).all()
+    if len(markerData) > 0:
+        markers =  [*markers, *markerData]
+    return {"holidays":holiday, "markers":markers}
 
 def get_holiday_users(id):
-    holiday_users = Holidays.query.filter(Holidays.holiday_members.any(id=holidays.id)).all()
+    holiday_users = db.session.query(holiday_members).join('users', users.id== holiday_members.user_id)
     return holiday_users
+
+def add_holiday_user(holiday_id, new_member_id):
+    db.session.execute(holiday_members.insert(),params={"holiday_id": holiday_id, "user_id": new_member_id},)
+    db.session.commit()

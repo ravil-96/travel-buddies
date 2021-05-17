@@ -43,7 +43,7 @@ function Weather() {
         <input type="submit" value="Search" />
       </form>
       <p>
-        Current weather in {city} is {weatherData.description}{" "}
+        Current weather in {weatherData.city} is {weatherData.description}{" "}
         {weatherData.temperature}°{" "}
         <WeatherIcon code={weatherData.icon} alt={weatherData.description} />
       </p>

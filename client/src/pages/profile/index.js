@@ -3,10 +3,13 @@ import { MyMap } from "../../components"
 
 function Profile() {
   return (
-  <>
+  <div>
   <h1>Profile page</h1>
-  <MyMap />
-  </>
+    
+    <MyMap />
+  <button>plan a trip</button>
+
+  </div>
   )
 }
 
