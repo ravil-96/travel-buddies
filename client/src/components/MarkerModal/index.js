@@ -51,7 +51,7 @@ function MarkerModal({ show, handleClose, location }) {
           <Form.Label>Title</Form.Label>
           <Form.Control
             type="textarea"
-            placeholder="Enter desc"
+            placeholder="Enter description"
             onChange={handleDescEntry}
           />
         </Form.Group>
