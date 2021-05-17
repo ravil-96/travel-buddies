@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { MyMap, NewHolidayButton } from "../../components"
+import { MyMap, NewHolidayButton, HolidayCards } from "../../components"
 import { useDispatch, useSelector } from "react-redux"
 import { loadUserHolidays } from "../../actions"
 
@@ -13,6 +13,7 @@ function Profile() {
   <div>
   <h1>Profile page</h1>
     <NewHolidayButton />
+    <HolidayCards />
     <MyMap />
     
 

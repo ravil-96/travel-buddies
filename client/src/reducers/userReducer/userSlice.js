@@ -1,4 +1,4 @@
-const userReducer = (state = { logged_in: false }, action) => {
+const userReducer = (state = { logged_in: false, holidays: []}, action) => {
   switch (action.type) {
     case "SET_ERROR":
         return {
