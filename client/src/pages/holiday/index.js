@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux"
 import { MapSearch, Weather, MyMap, MarkerModal } from "../../components";
 import { useParams } from "react-router-dom"
 import { useSocket } from '../../customHooks'
-import { clearMarkers } from '../../actions'
+import { clearMarkers, loadHoliday } from '../../actions'
 
 function Holiday() {
   const { id } = useParams()
@@ -28,7 +28,7 @@ function Holiday() {
     dispatch(clearMarkers())
     // dispatch(clearChat())
     console.log("reloaded")
-    // dispatch(loadHoliday())
+    dispatch(loadHoliday(id))
   },[id])
   
 
