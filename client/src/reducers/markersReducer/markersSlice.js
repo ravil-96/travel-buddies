@@ -1,5 +1,6 @@
 const initialState = []
 
+
 function nextMarkerId(markers) {
     const maxId = markers.reduce((maxID, marker) => Math.max(marker.id, maxId), -1)
     return maxId + 1
