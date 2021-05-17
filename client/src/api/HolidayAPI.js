@@ -3,7 +3,7 @@ import axios from 'axios';
 
 export const sendMarker = async (marker) => {
         try {
-            await axios.post(`http://localhost:5000/maps/marker`, 
+            await axios.post(`${apiUrl}/maps/marker`, 
             {
                 title: marker.title,
                 desc: marker.desc,
@@ -19,12 +19,13 @@ export const sendMarker = async (marker) => {
 
 export const sendHoliday = async (holiday) => {
     try {
-        await axios.post(`http://localhost:5000/holidays`, 
+        const { data } = await axios.post(`${apiUrl}/holidays`, 
         {
             title: holiday.title,
             creator: holiday.creator
         }
         )
+        return data
     } catch (err) {
         console.warn(err.message)
     }

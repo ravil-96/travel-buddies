@@ -11,7 +11,9 @@ import {
 // this component maps an array of marker data (position, title, desc) to react-leaflet components
 // currently passed as a prop but we should move that logic to redux
 function MapContent() {
-  const data = useSelector((state) => state.markers)
+  let data = []
+  const markers = useSelector((state) => state.markers)
+  if (markers.length > 0) {data=markers}
   return data.map((d, i) => {
     return (
       <Marker key={i} position={d.position}>

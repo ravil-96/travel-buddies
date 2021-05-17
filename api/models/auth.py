@@ -22,7 +22,7 @@ def create_user(new_name, new_email, new_password):
 def auth_user(new_name, new_password):
     user = Users.query.filter_by(username=new_name).first()
     if bcrypt.checkpw(new_password.encode('utf8'), user.password.encode('utf-8')):
-        return True
+        return user.id
     else:
         return False
 

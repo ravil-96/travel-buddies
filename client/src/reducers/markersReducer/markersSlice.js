@@ -8,6 +8,11 @@ function nextMarkerId(markers) {
 
 const markersReducer = (state=initialState, action) => {
     switch(action.type) {
+        case 'LOAD_MARKERS': {
+            return [
+                ...action.payload.map(m => ({title: m.title, desc: m.desc, position: [m.position_lat, m.position_long]}))
+            ]
+        }
         case 'ADD_MARKER': {
             return [
                 ...state,
