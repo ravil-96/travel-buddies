@@ -6,7 +6,6 @@ import "./index.css";
 
 function ChatBox() {
     const [message, setMessage] = useState("")
-    
 
  function handleSend(e){
     e.preventDefault()
