@@ -2,8 +2,13 @@ from app import db
 import bcrypt
 import jwt
 key='supersecret'
+from dataclasses import dataclass
 
+@dataclass
 class Users(db.Model):
+    id: int
+    username: str
+    email: str
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(80), unique=False, nullable=False)
     password = db.Column(db.String(1000), unique=False, nullable=False)
@@ -29,3 +34,7 @@ def auth_user(new_name, new_password):
 def jwt_user(username):
     encoded = jwt.encode({"username": username}, 'mynewsecret', algorithm="HS256")
     return encoded
+
+def get_all_users():
+    users = Users.query.all()
+    return users
