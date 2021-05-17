@@ -19,6 +19,9 @@ const markersReducer = (state=initialState, action) => {
                 {position:action.payload.location, title:action.payload.title, desc:action.payload.desc}
             ] 
         }    
+        case 'CLEAR_MARKERS': {
+            return [] 
+        }  
         case 'SELECT_MARKER': {
             return state.map((marker) => {
                 if (marker.id !== action.payload) {

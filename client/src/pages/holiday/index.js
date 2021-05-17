@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux"
+import { useSelector, useDispatch } from "react-redux"
 import { MapSearch, Weather, MyMap, MarkerModal } from "../../components";
 import { useParams } from "react-router-dom"
 import { useSocket } from '../../customHooks'
+import { clearMarkers } from '../../actions'
 
 function Holiday() {
   const { id } = useParams()
@@ -21,6 +22,14 @@ function Holiday() {
     setMarkerLocation(location)
     handleShow()
   }
+
+  const dispatch = useDispatch()
+  useEffect(() => {
+    dispatch(clearMarkers())
+    // dispatch(clearChat())
+    console.log("reloaded")
+    // dispatch(loadHoliday())
+  },[id])
   
 
 
