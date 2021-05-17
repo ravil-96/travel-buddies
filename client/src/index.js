@@ -6,9 +6,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 import { Provider } from "react-redux";
 import store from "./store";
-import {fetchMarkers} from './actions/map/index'
-
-store.dispatch(fetchMarkers)
 
 import App from "./App";
 
