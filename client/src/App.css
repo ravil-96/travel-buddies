@@ -8,3 +8,7 @@
     max-height: 400px;
     overflow-y: scroll;
 }
+
+#dropdown-basic-search::after{
+    display: none; 
+ }
