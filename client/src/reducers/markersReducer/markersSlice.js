@@ -8,6 +8,9 @@ function nextMarkerId(markers) {
 
 const markersReducer = (state=initialState, action) => {
     switch(action.type) {
+        case 'markers/markersLoaded': {
+            return action.payload
+        }
         case 'ADD_MARKER': {
             return [
                 ...state,
@@ -34,4 +37,5 @@ const markersReducer = (state=initialState, action) => {
             return state;
     }
 }
+
 export default markersReducer

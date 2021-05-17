@@ -50,7 +50,7 @@ function RegisterModal({ show, handleClose }) {
         />
       </Modal.Body>
       <Modal.Footer>
-        <Button variant="success" type="submit" form='registerForm' onClick={(e) => handleSubmit(e)}>
+        <Button variant="dark" type="submit" form='registerForm' onClick={(e) => handleSubmit(e)}>
           Sign Up
         </Button>
         <Button variant="secondary" onClick={handleClose}>

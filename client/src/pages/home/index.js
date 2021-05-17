@@ -1,12 +1,18 @@
 import React from 'react'
 import { Login } from '../../components'
+import { Header } from '../../layout'
+
+import './style.css'
 
 function Home(){
     return ( 
-    <>   
-    <h1>Travel Buddies 🌎 </h1>
-    <Login />
-    </> 
+    <>
+        <Header />  
+        <div class="row"> 
+            <div class="column"><img src="https://i.imgur.com/O3N7N6x.png"/></div>
+            <div class="column"><Login /></div>
+        </div> 
+    </>
     )
 }
 
