@@ -16,11 +16,6 @@ function Message({ user, content }){
 }
 
 function MessageList(){
-  // const data = [
-  //   {username: 'bob', content: 'hello there!'},
-  //   {username: 'chris', content: 'hi bob!'},
-  //   {username: 'steve', content: 'what\'s up! This is a longer message to test long messages - maybe it\'s too long?'}
-  // ]
   const data = useSelector(state => state.chat)
   const message_list = data.map(d => <Message user={d.user} content={d.content}/>)
   return message_list
