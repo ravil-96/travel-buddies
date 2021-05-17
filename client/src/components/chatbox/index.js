@@ -1,25 +1,28 @@
 import React, {useState} from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector } from 'react-redux'
+import { useParams } from 'react-router-dom'
 import "./index.css";
 
-function Message({ username, content }){
+function Message({ user, content }){
+  const me = useSelector(state => state.user.user)
   return (
-        <div className={`message ${username === 'bob' ? 'me' : 'other'}`}>
-          <small>{username}</small>
+        <div className={`message ${user === me ? 'me' : 'other'}`}>
+          <small>{user}</small>
           <div>{content}</div>
         </div>
   )
 }
 
 function MessageList(){
-  const data = [
-    {username: 'bob', content: 'hello there!'},
-    {username: 'chris', content: 'hi bob!'},
-    {username: 'steve', content: 'what\'s up! This is a longer message to test long messages - maybe it\'s too long?'}
-  ]
-  const message_list = data.map(d => <Message username={d.username} content={d.content}/>)
+  // const data = [
+  //   {username: 'bob', content: 'hello there!'},
+  //   {username: 'chris', content: 'hi bob!'},
+  //   {username: 'steve', content: 'what\'s up! This is a longer message to test long messages - maybe it\'s too long?'}
+  // ]
+  const data = useSelector(state => state.chat)
+  const message_list = data.map(d => <Message user={d.user} content={d.content}/>)
   return message_list
 }
 
@@ -27,16 +30,22 @@ function MessageList(){
 
 function ChatBox() {
     const [message, setMessage] = useState("")
+    const user = useSelector(state => state.user.user)
+    const { id } = useParams()
+    const mySocket = useSelector(state => state.user.socket)
+    function handleSend(e) {
+      e.preventDefault();
+      mySocket.emit("client message", {
+        room: id,
+        message: { user: user, content: message },
+      });
+      // dispatch(addChat({user: user, content: message }))
+      setMessage("");
+    }
 
- function handleSend(e){
-    e.preventDefault()
-    // console.log(e.target.value)
-    // handleInput()
- }
-
-function handleInput(e){
-    setMessage(e.target.value);
-}
+    function handleInput(e){
+        setMessage(e.target.value);
+    }
 
   return (
     <div className="chat-box">
@@ -44,18 +53,18 @@ function handleInput(e){
         <MessageList />
       </div>
 
-        <Form>
+        <Form onSubmit={(e) => handleSend(e)}>
           <Form.Group style={{display: 'flex'}}>
             <Form.Control
               type="text"
               placeholder="message"
+              value={message}
               onChange={handleInput}
             />
 
             <Button
               variant="primary"
               type="submit"
-              onSubmit={(e) => handleSend(e)}
             >
               Send
             </Button>

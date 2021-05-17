@@ -4,7 +4,7 @@ import { MapSearch, Weather, MyMap, MarkerModal, CardContainer, MarkerCards, Cha
 import { NavBar } from "../../layout"
 import { useParams } from "react-router-dom"
 import { useSocket } from '../../customHooks'
-import { clearMarkers, loadHoliday } from '../../actions'
+import { clearMarkers, loadHoliday, clearChat } from '../../actions'
 import ButtonToolbar from 'react-bootstrap/ButtonToolbar'
 
 function Holiday() {
@@ -28,7 +28,7 @@ function Holiday() {
   const dispatch = useDispatch()
   useEffect(() => {
     dispatch(clearMarkers())
-    // dispatch(clearChat())
+    dispatch(clearChat())
     console.log("reloaded")
     dispatch(loadHoliday(id))
   },[id])
