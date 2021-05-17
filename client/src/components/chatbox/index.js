@@ -9,36 +9,44 @@ function ChatBox() {
  function handleSend(e){
     e.preventDefault()
     // console.log(e.target.value)
-    handleInput()
+    // handleInput()
  }
 
 function handleInput(e){
     console.log(e.target.value);
     setMessage(e.target.value);
+    handleSend()
 }
 
   return (
     <div className="chat-box">
-      <div className="chatApp_conv">
-        <div className="chatApp_convTimeline">
-          <div className="chatApp_convMessageItem--left clearfix">
-            <div className="chatApp__convMessageValue">hello?</div>
-          </div>
+      <div className="chat-timeline">
+        <div className="message-left ">
+          hello
+        </div>
+        <div className="message-right ">
+          {message}
+        </div>
 
-          <div className="chatApp_convMessageItem--right clearfix">
-            <div className="chatApp__convMessageValue">hello</div>
-          </div>
-        </div>
-        <div className=" row">
-          <Form className="col-10">
-            <Form.Group>
-              <Form.Control type="text" placeholder="Enter message" className="text-input"/>
-            </Form.Group>
-          </Form>
-          <Button variant="primary" type="submit" className="send-message btn col-2">
-            Send
-          </Button>
-        </div>
+        <Form>
+          <Form.Group>
+            <Form.Control
+              type="text"
+              placeholder="Enter message"
+              className="text-input"
+              onChange={handleInput}
+            />
+
+            <Button
+              variant="primary"
+              type="submit"
+              className="send-message"
+              onSubmit={handleSend}
+            >
+              Send
+            </Button>
+          </Form.Group>{" "}
+        </Form>
       </div>
     </div>
   );
