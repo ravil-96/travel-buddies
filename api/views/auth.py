@@ -1,6 +1,6 @@
 from flask import request, jsonify, request
 
-from models import Users, create_user, auth_user, jwt_user, get_all_users
+from models import Users, create_user, auth_user, jwt_user, get_all_users, search_users
 from app import app
 import jwt
 
@@ -46,6 +46,12 @@ def user(username):
 @app.route('/users', methods=['GET'])
 def get_users():
     res =  get_all_users()
+    newRes = list(map(lambda x: {"username":x.username, "id": x.id}, res))
+    return jsonify({'users': newRes}), 200
+
+@app.route('/users/search/<query>', methods=['GET'])
+def search_users_route(query):
+    res =  search_users(query)
     newRes = list(map(lambda x: {"username":x.username, "id": x.id}, res))
     return jsonify({'users': newRes}), 200
    
