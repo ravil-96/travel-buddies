@@ -9,9 +9,6 @@ import jwt
 def index():
     return jsonify({'msg': 'hello'}), 200
 
-@app.route('/test', methods=['GET'])
-def test():
-    return jsonify({"msg": f'it works'})
 
 @app.route('/register', methods=['POST'])
 def register():

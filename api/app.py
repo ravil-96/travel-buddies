@@ -17,7 +17,7 @@ migrate = Migrate(app, db)
 
 # importing the models to make sure they are known to Flask-Migrate
 from models import *
-from views import *
+from views import auth, map, holiday
 # any other registrations; blueprints, template utilities, commands
 
 
