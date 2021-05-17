@@ -1,0 +1,10 @@
+.map-card-box{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.card-container-wrapper {
+    max-height: 400px;
+    overflow-y: scroll;
+}

@@ -5,6 +5,7 @@ import { addMarker } from "../../actions"
 import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import { sendMarker } from "../../api"
 
 function MarkerModal({ show, handleClose, location }) {
   const dispatch = useDispatch()
@@ -23,6 +24,7 @@ function MarkerModal({ show, handleClose, location }) {
   function handleCreate(e){
     e.preventDefault()
     mySocket.emit("add marker", {room: id, marker: {location, title, desc}});
+    sendMarker({room: id, position_lat: location[0], position_long: location[1], title: title, desc: desc})
     handleClose()
   }
 

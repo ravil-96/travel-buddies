@@ -2,13 +2,15 @@ import React, { useState } from "react";
 import axios from "axios";
 import Dropdown from "react-bootstrap/Dropdown";
 import DropdownButton from "react-bootstrap/DropdownButton";
-
+import { useDispatch } from "react-redux";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 
+
 function DropdownList( { items, handleClick } ){
   function handleHandleClick(data){
-    console.log(data)
+    // console.log(data)
+  
     handleClick([data.latitude, data.longitude])
   }
   const list = items.map((d, i) => {
@@ -39,11 +41,13 @@ export default function MapSearch( { handleClick }) {
     const url = `http://api.positionstack.com/v1/forward?access_key=${apikey}&query=${location}`;
     const data = await axios.get(url);
     setLocationData(data.data.data);
+    // console.log(data.data.data[0])
+   
   }
 
   return (
     <>
-        <DropdownButton id="dropdown-basic-button" title="Search destination">
+        <DropdownButton style={{zIndex: '1001'}} id="dropdown-basic-button" title="Search destination">
         <Form onSubmit={fetchLocation}>
         <Form.Group controlId="formBasicUsername">
           <Form.Control
