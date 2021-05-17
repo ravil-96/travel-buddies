@@ -1,6 +1,6 @@
 from flask import request, jsonify, request
 
-from models import Users, create_user, auth_user, jwt_user
+from models import Users, create_user, auth_user, jwt_user, get_all_users
 from app import app
 import jwt
 
@@ -42,3 +42,10 @@ def user(username):
             return jsonify({'msg': 'not authorized'}), 401 
     except Exception as e: 
             return jsonify({'msg': f'{e}'}), 401
+
+@app.route('/users', methods=['GET'])
+def get_users():
+    res =  get_all_users()
+    newRes = list(map(lambda x: {"username":x.username, "id": x.id}, res))
+    return jsonify({'users': newRes}), 200
+   

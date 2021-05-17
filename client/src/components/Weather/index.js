@@ -19,9 +19,9 @@ console.log(title)
 
 
   function search() {
-    let geoApiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&units=metric&appid=${apiKey}`;
+    // let geoApiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&units=metric&appid=${apiKey}`;
     // let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`;
-    axios.get(geoApiUrl).then(getWeather);
+    // axios.get(geoApiUrl).then(getWeather);
   }
   // function handleSubmit(event) {
   //   event.preventDefault();
