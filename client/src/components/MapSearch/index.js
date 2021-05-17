@@ -47,7 +47,7 @@ export default function MapSearch( { handleClick }) {
 
   return (
     <>
-        <DropdownButton id="dropdown-basic-button" title="Search destination">
+        <DropdownButton style={{zIndex: '1001'}} id="dropdown-basic-button" title="Search destination">
         <Form onSubmit={fetchLocation}>
         <Form.Group controlId="formBasicUsername">
           <Form.Control

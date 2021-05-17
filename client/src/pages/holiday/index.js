@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux"
-import { MapSearch, Weather, MyMap, MarkerModal, CardContainer, ChatBox } from "../../components";
+import { useSelector, useDispatch } from "react-redux"
+import { MapSearch, Weather, MyMap, MarkerModal, CardContainer, MarkerCards, ChatBox } from "../../components";
+import { NavBar } from "../../layout"
 import { useParams } from "react-router-dom"
 import { useSocket } from '../../customHooks'
+import { clearMarkers, loadHoliday } from '../../actions'
 
 function Holiday() {
   const { id } = useParams()
@@ -21,6 +23,14 @@ function Holiday() {
     setMarkerLocation(location)
     handleShow()
   }
+
+  const dispatch = useDispatch()
+  useEffect(() => {
+    dispatch(clearMarkers())
+    // dispatch(clearChat())
+    console.log("reloaded")
+    dispatch(loadHoliday(id))
+  },[id])
   
 
 
@@ -28,11 +38,20 @@ function Holiday() {
 
   return (
     <>
-      <Weather />
-      <MyMap handleClick={handleClick}/>
-      <MarkerModal show={show} handleClose={handleClose} location={markerLocation} />
+    <NavBar />
+      {/* <Weather /> */}
+      <MarkerModal
+        show={show}
+        handleClose={handleClose}
+        location={markerLocation}
+      />
       <MapSearch handleClick={handleClick} />
-      <CardContainer />
+      <div className="map-card-box">
+        <MyMap handleClick={handleClick}/>
+        <CardContainer>
+          <MarkerCards />
+        </CardContainer>
+      </div>
       <ChatBox />
     </>
   );

@@ -66,7 +66,7 @@ const handlePasswordEntry = (e) => {
         <Button variant="primary" type="submit">
           Login
         </Button>
-        <Button onClick={handleShow} variant="success">
+        <Button onClick={handleShow} variant="dark">
           Create New Account
         </Button>
       </Form>

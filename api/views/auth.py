@@ -1,6 +1,6 @@
 from flask import request, jsonify, request
 
-from models import Users, create_user, auth_user, jwt_user
+from models import Users, create_user, auth_user, jwt_user, get_all_users
 from app import app
 import jwt
 
@@ -16,7 +16,7 @@ def register():
         data = request.get_json()
         create_user(data["username"], data["email"], data["password"])
         res = auth_user(data["username"],data["password"])
-        return jsonify({"msg": f'{data["username"]}', "token": jwt_user(data["username"])})
+        return jsonify({"msg": f'{data["username"]}', "id": res, "token": jwt_user(data["username"])})
     except Exception as e: 
         return jsonify({'msg': f'{e}'}), 401
 
@@ -26,7 +26,7 @@ def login():
         data = request.get_json()
         res = auth_user(data["username"],data["password"])
         if res:
-            return jsonify({"msg": f'{data["username"]}', "token": jwt_user(data["username"])})
+            return jsonify({"msg": f'{data["username"]}', "id": res, "token": jwt_user(data["username"])})
         else:
             return jsonify({'msg': f'{res}',}), 200
 
@@ -42,3 +42,10 @@ def user(username):
             return jsonify({'msg': 'not authorized'}), 401 
     except Exception as e: 
             return jsonify({'msg': f'{e}'}), 401
+
+@app.route('/users', methods=['GET'])
+def get_users():
+    res =  get_all_users()
+    newRes = list(map(lambda x: {"username":x.username, "id": x.id}, res))
+    return jsonify({'users': newRes}), 200
+   

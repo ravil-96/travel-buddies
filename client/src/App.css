@@ -1,21 +1,10 @@
-.card-container-wrapper{
-    /* scroll */
-display: flex;
-    flex-direction: column;
-    position: relative;
-    left: 45rem;
-    bottom: 30rem;
-    justify-content: right;
-    width: 25%;
-    height: 25rem; 
-    overflow: auto
+.map-card-box{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 
-.card-body{
-    padding: .75rem;
-    font-size: .7rem
-}
-
-.card{
-    margin:1rem
+.card-container-wrapper {
+    max-height: 400px;
+    overflow-y: scroll;
 }
