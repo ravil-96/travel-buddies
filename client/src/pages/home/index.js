@@ -1,8 +1,6 @@
 import React from 'react'
 import { Login } from '../../components'
 
-import './style.css'
-
 function Home(){
     return ( 
     <>   
