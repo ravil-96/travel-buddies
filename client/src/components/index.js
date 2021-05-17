@@ -8,3 +8,4 @@ export { default as Weather } from "./Weather";
 export { default as WeatherIcon } from "./WeatherIcon";
 export { default as NewHolidayButton } from "./NewHolidayButton";
 export { default as HolidayCards } from "./HolidayCards";
+export { default as CardContainer } from "./CardContainer";
