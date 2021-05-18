@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux"
-import { MapSearch, Weather, MyMap, MarkerModal, CardContainer, MarkerCards, ChatBox, AddMember, LogoutButton, UserAvatar, MembersList } from "../../components";
+import { MapSearch, Weather, MyMap, MarkerModal, CardContainer, MarkerCards, ChatBox, AddMember, LogoutButton, MembersList } from "../../components";
 import { NavBar } from "../../layout"
 import { useParams } from "react-router-dom"
 import { useSocket } from '../../customHooks'
@@ -52,8 +52,6 @@ function Holiday() {
         <AddMember />
         <MembersList />
       </ButtonToolbar> 
-      <LogoutButton />
-      <UserAvatar />
       <div className="map-card-box">
         <MyMap handleClick={handleClick}/>
         <CardContainer>
