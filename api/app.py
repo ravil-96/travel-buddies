@@ -26,7 +26,7 @@ from views import auth, map, holiday, user
 
 
 
-# print("Creating database tables...ok!")
-# db.create_all()
-# print("Done!")
+print("Creating database tables...ok!")
+db.create_all()
+print("Done!")
 
