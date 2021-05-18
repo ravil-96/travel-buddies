@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { MyMap, NewHolidayButton, HolidayCards, LogoutButton, CardContainer } from "../../components"
+import { MyMap, NewHolidayButton, HolidayCards, CardContainer, LogoutButton, UserAvatar} from "../../components"
 import { NavBar } from "../../layout"
 import { useDispatch, useSelector } from "react-redux"
 import { loadUserHolidays } from "../../actions"
@@ -17,6 +17,7 @@ function Profile() {
       <NewHolidayButton />
       <div className="map-card-box">
         <LogoutButton />
+        <UserAvatar />
         <MyMap />
         <CardContainer>
           <HolidayCards />
