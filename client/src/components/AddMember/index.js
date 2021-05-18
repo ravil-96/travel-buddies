@@ -1,20 +1,19 @@
 import React, { useState } from "react";
 import Dropdown from "react-bootstrap/Dropdown";
-import DropdownButton from "react-bootstrap/DropdownButton";
+import ListGroup from  "react-bootstrap/ListGroup";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { fetchUsers } from "../../api"
 
 function DropdownList( { items } ){
   function handleHandleClick(data){
-  
     console.log(data)
   }
   const list = items.map((d, i) => {
     return (
-      <Dropdown.Item onClick={() => handleHandleClick(d)} key={i}>
-        {d.username}
-      </Dropdown.Item>
+      <ListGroup.Item style={{display: "flex", justifyContent: 'space-between'}} key={i}>
+        {d.username}<Button size="sm" variant="success" onClick={() => handleHandleClick(d)}>+</Button>
+      </ListGroup.Item>
     );
   });
   return list;
@@ -43,11 +42,10 @@ export default function MapSearch() {
   return (
     <Dropdown style={{zIndex: '1001'}}>
         <Dropdown.Toggle variant="success" id="dropdown-basic-search">Add user +</Dropdown.Toggle>
-        <Dropdown.Menu style={{padding: '0.5rem'}}>
+        <Dropdown.Menu>
         <Form onSubmit={(e) => {e.preventDefault()}}>
         <Form.Group controlId="formBasicSearch">
           <Form.Control
-            style={{padding: '0', paddingLeft: '0.5rem'}}
             required
             autoComplete={"off"}
             type="search"
@@ -56,7 +54,9 @@ export default function MapSearch() {
           />
         </Form.Group>
         </Form>
+        <ListGroup variant="flush">
           <DropdownList  items={userdata} />
+        </ListGroup>
 
 
       
