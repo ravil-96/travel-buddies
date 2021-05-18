@@ -3,11 +3,14 @@ import Dropdown from "react-bootstrap/Dropdown";
 import ListGroup from  "react-bootstrap/ListGroup";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import { fetchUsers } from "../../api"
+import { fetchUsers, addHolidayMember } from "../../api"
+import { useParams } from 'react-router-dom'
 
 function DropdownList( { items } ){
+    const { id } = useParams()
+
   function handleHandleClick(data){
-    console.log(data)
+    addHolidayMember({id: data.id, user_id: id})
   }
   const list = items.map((d, i) => {
     return (

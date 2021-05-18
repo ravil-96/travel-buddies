@@ -40,7 +40,7 @@ function Holiday() {
   return (
     <>
     <NavBar />
-      {/* <Weather /> */}
+      <Weather />
       <MarkerModal
         show={show}
         handleClose={handleClose}
