@@ -59,6 +59,10 @@ def get_holiday_users(id):
         return  users
 
 def add_holiday_user(new_member_id, holiday_id, ):
-        member = Holiday_Members(new_member_id, holiday_id)
-        db.session.add(member)
-        db.session.commit()
+            owner = get_holiday_owner(holiday_id)
+            if new_member_id == owner["user_id"]:
+                return False
+            else:
+                member = Holiday_Members(new_member_id, holiday_id)
+                db.session.add(member)
+                db.session.commit()
