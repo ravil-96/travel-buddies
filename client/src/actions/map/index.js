@@ -1,6 +1,8 @@
 import axios from 'axios'
 
-export const addMarker = (marker)=> ({type: 'ADD_MARKER', payload: marker})  
+export const addMarker = (marker)=> ({type: 'ADD_MARKER', payload: marker}) 
+
+// export const deleteMarker = (marker) => ({type: 'DELETE_MARKER', payload: marker})
 
 export const clearMarkers = () => ({type: 'CLEAR_MARKERS'})  
 
