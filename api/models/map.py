@@ -1,3 +1,4 @@
+from flask import flash
 from app import db
 from dataclasses import dataclass
 
@@ -23,3 +24,11 @@ def create_marker(new_title, new_desc, new_position_lat, new_position_long, new_
     db.session.add(marker)
     db.session.commit()
     return marker
+
+def delete_marker(id):
+    marker = Markers.query.get_or_404(id)
+    db.session.delete(marker)
+    db.session.commit()
+    flash('You have successfully deleted the marker')
+
+
