@@ -6,7 +6,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { userLogin } from "../../actions"
 import { useHistory } from 'react-router-dom'
 
-function Login({ handleUsernameEntry, handlePasswordEntry }) {
+function Login() {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -24,22 +24,25 @@ function Login({ handleUsernameEntry, handlePasswordEntry }) {
     if (res) {
       history.push("/profile");
     }
+
   };
 
-  // const handleUsernameEntry = (e) => {
-  //   setUsername(e.target.value);
-  // };
+  const handleUsernameEntry = (e) => {
+    setUsername(e.target.value);
+  };
   // const handleEmailEntry = (e) => {
   //   setEmail(e.target.value)
   // }
-  // const handlePasswordEntry = (e) => {
-  //   setPassword(e.target.value);
-  // };
+  const handlePasswordEntry = (e) => {
+    
+    setPassword(e.target.value);
+
+  };
 
   return (
     <>
       <div>
-        <Form >
+        <Form onSubmit={handleSubmit}>
           <Form.Group controlId="formBasicUsername">
             <Form.Label>Username</Form.Label>
             <Form.Control

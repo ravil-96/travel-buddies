@@ -61,8 +61,8 @@ function Register( {show, handleClose }) {
 
   const handlePasswordConfirmEntry = (e) => {
     setConfirmPassword(e.target.value);
-    if (password !== confirmPassword) {
-      alert("passwords don't match");}
+    // if (password !== confirmPassword) {
+    //   alert("passwords don't match");}
     //  else {
     //   handleSubmit()
     // }
