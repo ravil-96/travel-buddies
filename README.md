@@ -17,3 +17,8 @@
         - access at `localhost:8080` 
 
 - end docker processes with `docker compose down` or `ctrl-c` or `bash _scripts/teardown.sh` 
+
+ ### troubleshooting
+ If you are getting error messages about `wait-for-it.sh` file, particulalrly Mac users
+ you'll need to check the file has the right permissioins (it should have an x at the end) by running `ls -lah`. You may need to run 
+ `chmod +x wait-for-it.sh` and check by running `ls -lah` again.
