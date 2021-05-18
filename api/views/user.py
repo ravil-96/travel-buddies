@@ -10,3 +10,4 @@ def user_holidays(id):
     return jsonify({"holidays": data["holidays"], "markers": data["markers"]})
 
 
+
