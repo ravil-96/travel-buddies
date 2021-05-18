@@ -4,6 +4,7 @@ import Button from "react-bootstrap/Button";
 import { useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import "./index.css";
+import { MdChat, MdClose } from "react-icons/md";
 
 function Message({ user, content }){
   const me = useSelector(state => state.user.user)
@@ -47,7 +48,7 @@ function ChatBox() {
     }
 
   if (!show) {
-    return <Button onClick={handleShow} className="chat-button" varient="secondary">chat</Button>
+    return <Button onClick={handleShow} className="chat-button" variant="secondary"><MdChat/></Button>
   }
   else {
   return (
@@ -75,7 +76,7 @@ function ChatBox() {
           </Form.Group>
         </Form>
       </div>
-      <Button onClick={handleClose} className="chat-button" varient="secondary">chat</Button>
+      <Button onClick={handleClose} className="chat-button" variant="secondary"><MdClose/></Button>
       </>
   );
   }
