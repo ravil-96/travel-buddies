@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux"
-import { MapSearch, Weather, MyMap, MarkerModal, CardContainer, MarkerCards, ChatBox } from "../../components";
+import { MapSearch, Weather, MyMap, MarkerModal, CardContainer, MarkerCards, ChatBox, AddMember } from "../../components";
 import { NavBar } from "../../layout"
 import { useParams } from "react-router-dom"
 import { useSocket } from '../../customHooks'
-import { clearMarkers, loadHoliday } from '../../actions'
+import { clearMarkers, loadHoliday, clearChat } from '../../actions'
+import ButtonToolbar from 'react-bootstrap/ButtonToolbar'
 
 function Holiday() {
   const { id } = useParams()
@@ -27,7 +28,7 @@ function Holiday() {
   const dispatch = useDispatch()
   useEffect(() => {
     dispatch(clearMarkers())
-    // dispatch(clearChat())
+    dispatch(clearChat())
     console.log("reloaded")
     dispatch(loadHoliday(id))
   },[id])
@@ -45,7 +46,10 @@ function Holiday() {
         handleClose={handleClose}
         location={markerLocation}
       />
+      <ButtonToolbar aria-label="Toolbar with button groups">
       <MapSearch handleClick={handleClick} />
+      <AddMember />
+      </ButtonToolbar>
       <div className="map-card-box">
         <MyMap handleClick={handleClick}/>
         <CardContainer>

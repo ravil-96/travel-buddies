@@ -38,3 +38,7 @@ def jwt_user(username):
 def get_all_users():
     users = Users.query.all()
     return users
+
+def search_users(query):
+    users = Users.query.filter(Users.username.ilike(f'{query}%'))
+    return users

@@ -10,6 +10,9 @@ function NavBar() {
       <NavLink to="/profile" activeClassName="current">
         Profile
       </NavLink>
+      <NavLink to="/holidays/3" activeClassName="current">
+        temp link room3
+      </NavLink>
     </nav>
   );
 }

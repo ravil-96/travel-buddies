@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import io from "socket.io-client";
-import { addSocket, addMarker } from '../../actions'
+import { addSocket, addMarker, addChat } from '../../actions'
 
 function useSocket(id){
     const user = useSelector(state => state.user.user)
@@ -28,6 +28,11 @@ function useSocket(id){
           socket.on("server marker", (data) => {
             dispatch(addMarker(data))
           });
+
+          socket.on("server message", (data) => {
+            dispatch(addChat(data))
+          });
+
           return () => { 
             socket.disconnect()
           }
