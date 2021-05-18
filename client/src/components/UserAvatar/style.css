@@ -7,3 +7,13 @@
     right: 1rem;
     font-size: 0.75rem
 }
+
+.status-badge {
+    position: fixed;
+    background-color: lightgreen;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    top: 2.5rem;
+    right: 1rem;
+}

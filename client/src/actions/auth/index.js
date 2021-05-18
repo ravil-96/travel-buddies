@@ -15,6 +15,7 @@ export const userLogin = (username, password) => {
            })
            return true
        } catch (err) {
+           alert(err)
           console.warn(err)
            dispatch({
                type: 'SET_ERROR',
