@@ -26,7 +26,12 @@ def create_holiday(new_title, new_creator):
 
 def get_holidays_by_user(id):
     markers = []
-    userHolidays = Holidays.query.filter_by(creator=id).all()
+    userHolidays = Holidays.query.filter_by(creator=id).all()  
+    holidays = Holidays.query.all()
+    for holiday in holidays:
+        for member in holiday.members:
+             if member.id == int(id):
+                userHolidays.append(holiday)
     for h in list(userHolidays):
         markerData = Markers.query.filter_by(holiday_id=h.id).all()
         if len(markerData) > 0:
@@ -40,6 +45,11 @@ def get_holiday(id):
     if len(markerData) > 0:
         markers =  [*markers, *markerData]
     return {"holidays":holiday, "markers":markers}
+
+def get_holiday_owner(id):
+        owner_id = Holidays.query.filter_by(id=id).first().creator
+        owner = Users.query.filter_by(id=owner_id).first()
+        return  {"user_id": owner.id, "username": owner.username}
 
 def get_holiday_users(id):
         users = []
