@@ -21,10 +21,10 @@ function handleInput(e){
   return (
     <div className="chat-box">
       <div className="chat-timeline">
-        <div className="message-left ">
+        <div className="message-left">
           hello
         </div>
-        <div className="message-right ">
+        <div className="message-right">
           {message}
         </div>
 
