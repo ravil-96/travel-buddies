@@ -12,7 +12,7 @@ function Weather() {
 
   const markers = useSelector((state) => state.markers);
   const [position, setPosition] = useState([])
-  const [weatherData, setWeatherData] = useState()
+  const [weatherData, setWeatherData] = useState(null)
 
   useEffect(() => {
     if (markers.length > 0) {
@@ -21,7 +21,7 @@ function Weather() {
   },[markers])
 
   useEffect(() => {
-    if (position.length > 0) {
+    if (position.length > 0 && weatherData === null) {
     async function fetchWeather(){
       let geoApiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${position[0]}&lon=${position[1]}&units=metric&appid=${apiKey}`;
       const { data } = await axios.get(geoApiUrl)
