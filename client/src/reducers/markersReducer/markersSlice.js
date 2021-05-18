@@ -1,11 +1,5 @@
 const initialState = []
 
-
-function nextMarkerId(markers) {
-    const maxId = markers.reduce((maxID, marker) => Math.max(marker.id, maxId), -1)
-    return maxId + 1
-}
-
 const markersReducer = (state=initialState, action) => {
     switch(action.type) {
         case 'LOAD_MARKERS': {
@@ -35,7 +29,7 @@ const markersReducer = (state=initialState, action) => {
                 }
             })
         }
-        case 'markers/markerDeleted': {
+        case 'DELETE_MARKER': {
             return state.filter((marker) => marker.id !== action.payload)
         }
         default:
