@@ -24,6 +24,10 @@ function MessageList(){
 
 
 function ChatBox() {
+    const [show, setShow] = useState(false);
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+
     const [message, setMessage] = useState("")
     const user = useSelector(state => state.user.user)
     const { id } = useParams()
@@ -42,7 +46,12 @@ function ChatBox() {
         setMessage(e.target.value);
     }
 
+  if (!show) {
+    return <Button onClick={handleShow} className="chat-button" varient="secondary">chat</Button>
+  }
+  else {
   return (
+    <>
     <div className="chat-box">
       <div className="message-box">
         <MessageList />
@@ -66,6 +75,9 @@ function ChatBox() {
           </Form.Group>
         </Form>
       </div>
+      <Button onClick={handleClose} className="chat-button" varient="secondary">chat</Button>
+      </>
   );
+  }
 }
 export default ChatBox;
