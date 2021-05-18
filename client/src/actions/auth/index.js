@@ -1,9 +1,10 @@
 import axios from 'axios'
+import { apiUrl } from '../../api'
 
 export const userLogin = (username, password) => {
    return async (dispatch) => {
        try {
-         let { data } = await axios.post('http://localhost:5000/login', {
+         let { data } = await axios.post(`${apiUrl}/login`, {
             username: username,
             password: password
           })
@@ -29,7 +30,7 @@ export const userLogin = (username, password) => {
 export const userRegister = (username, email, password) => {
    return async (dispatch) => {
        try {
-         let { data } = await axios.post('http://localhost:5000/register', {
+         let { data } = await axios.post(`${apiUrl}/register`, {
             username: username,
             email: email,
             password: password

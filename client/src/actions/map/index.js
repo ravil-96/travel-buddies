@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { apiUrl } from '../../api'
 
 export const addMarker = (marker)=> ({type: 'ADD_MARKER', payload: marker}) 
 
@@ -9,7 +10,7 @@ export const clearMarkers = () => ({type: 'CLEAR_MARKERS'})
 export const loadUserHolidays = (id) => {
     return async (dispatch) => {
         try {
-            const { data } = await axios.get(`http://localhost:5000/users/${id}/holidays`)
+            const { data } = await axios.get(`${apiUrl}/users/${id}/holidays`)
         
             let markers = data.markers
             let holidays = data.holidays
@@ -33,7 +34,7 @@ export const loadUserHolidays = (id) => {
 export const loadHoliday = (id) => {
     return async (dispatch) => {
         try {
-            const { data } = await axios.get(`http://localhost:5000/holidays/${id}`)
+            const { data } = await axios.get(`${apiUrl}/holidays/${id}`)
             let markers = data.markers
             let holiday = data.holiday
             dispatch({
@@ -56,7 +57,7 @@ export const loadHoliday = (id) => {
 export const loadMembers = (id) => {
     return async (dispatch) => {
         try {
-            const { data } = await axios.get(`http://localhost:5000/holidays/${id}/users`)
+            const { data } = await axios.get(`${apiUrl}/holidays/${id}/users`)
             dispatch({
                 type: 'LOAD_MEMBERS',
                 payload: data
