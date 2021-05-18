@@ -1,11 +1,8 @@
 from app import db
 from dataclasses import dataclass
 from .map import Markers
-
-holiday_members = db.Table('holiday_members',
-    db.Column('user_id', db.Integer, db.ForeignKey('users.id'), primary_key=True),
-    db.Column('holiday_id', db.Integer, db.ForeignKey('holidays.id'), primary_key=True)
-)
+from .auth import *
+from sqlalchemy.orm import relationship, backref
 
 @dataclass
 class Holidays(db.Model):
@@ -16,8 +13,10 @@ class Holidays(db.Model):
     title = db.Column(db.String(80), unique=False, nullable=False)
     creator = db.Column(db.Integer, db.ForeignKey('users.id'),
         nullable=False)
-    holiday_members = db.relationship('Users', secondary=holiday_members, lazy='subquery',
-    backref=db.backref('holidays', lazy=True))
+    members = db.relationship("Users",
+            secondary=holiday_members,
+            backref=db.backref("users", lazy="dynamic"),
+            )
 
 def create_holiday(new_title, new_creator):
     holiday = Holidays(title=new_title, creator=new_creator)
@@ -43,9 +42,13 @@ def get_holiday(id):
     return {"holidays":holiday, "markers":markers}
 
 def get_holiday_users(id):
-    holiday_users = db.session.query(holiday_members).join('users', users.id== holiday_members.user_id)
-    return holiday_users
+        users = []
+        holiday = Holidays.query.filter_by(id=id).first()
+        for member in holiday.members:
+            users.append({"username": member.username, "user_id": member.id})
+        return  users
 
-def add_holiday_user(holiday_id, new_member_id):
-    db.session.execute(holiday_members.insert(),params={"holiday_id": holiday_id, "user_id": new_member_id},)
-    db.session.commit()
+def add_holiday_user(new_member_id, holiday_id, ):
+        member = Holiday_Members(new_member_id, holiday_id)
+        db.session.add(member)
+        db.session.commit()

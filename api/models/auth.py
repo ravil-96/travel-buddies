@@ -17,6 +17,23 @@ class Users(db.Model):
     def __repr__(self):
         return '<User %r>' % self.username
 
+class Holiday_Members(object):
+    def __init__(self, user_id, holiday_id):
+        self.user_id = user_id
+        self.holiday_id = holiday_id
+
+holiday_members = db.Table("holiday_members",
+        db.metadata,
+        db.Column("id", db.Integer, primary_key = True),
+        db.Column("user_id", db.Integer, db.ForeignKey("users.id")),
+        db.Column("holiday_id", db.Integer, db.ForeignKey("holidays.id")),
+        )
+# unique index of hippie_id and dog_id
+db.Index("member", holiday_members.c.user_id, holiday_members.c.holiday_id, unique = True)
+
+db.mapper(Holiday_Members, holiday_members)
+
+
 def create_user(new_name, new_email, new_password):
     hashPass = password=bcrypt.hashpw(new_password.encode('utf8'), bcrypt.gensalt())
     user = Users(username=new_name, email=new_email, password=hashPass.decode('utf-8'))
