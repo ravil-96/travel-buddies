@@ -30,3 +30,16 @@ export const sendHoliday = async (holiday) => {
         console.warn(err.message)
     }
 }
+
+export const addHolidayMember = async (hu) => {
+    try {
+        const { data } = await axios.post(`${apiUrl}/holidays/${hu.id}/users`, 
+        {
+            user_id: hu.user_id
+        }
+        )
+        return data
+    } catch (err) {
+        console.warn(err.message)
+    }
+}
