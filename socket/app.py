@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request
+import os
 from flask_socketio import SocketIO, send, emit, join_room, leave_room
 from flask_cors import CORS
 
@@ -45,4 +46,5 @@ def add_message(data):
 
 
 if __name__ == '__main__':
-    socketio.run(app, host='0.0.0.0', port="3000")
+    port = int(os.environ.get("PORT", 3000))
+    socketio.run(app, host='0.0.0.0', port=port)
