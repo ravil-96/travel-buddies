@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { MyMap, NewHolidayButton, HolidayCards, CardContainer } from "../../components"
+import { MyMap, NewHolidayButton, HolidayCards, CardContainer, LogoutButton, UserAvatar} from "../../components"
 import { NavBar } from "../../layout"
 import { useDispatch, useSelector } from "react-redux"
 import { loadUserHolidays } from "../../actions"
@@ -11,18 +11,20 @@ function Profile() {
     dispatch(loadUserHolidays(id))
   },[])
   return (
-  <div>
-  <NavBar />
-  <h1>Profile page</h1>
-    <NewHolidayButton />
-    <div className="map-card-box">
-      <MyMap />
-      <CardContainer>
+    <div>
+      <NavBar />
+      <h1>Profile page</h1>
+      <NewHolidayButton />
+      <div className="map-card-box">
+        <LogoutButton />
+        <UserAvatar />
+        <MyMap />
+        <CardContainer>
           <HolidayCards />
-      </CardContainer>
+        </CardContainer>
+      </div>
     </div>
-  </div>
-  )
+  );
 }
 
 export default Profile;
