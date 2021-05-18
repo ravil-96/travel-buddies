@@ -4,7 +4,6 @@ import WeatherIcon from "../WeatherIcon";
 import { useSelector, useDispatch } from "react-redux";
 import {MarkerModal, MapSearch} from '../MarkerModal'
 import {Holiday} from '../../pages'
-const apiKey = "d4ef3671c18ff18482439536bbb0fa40";
 
 function Weather() {
   const [city, setCity] = useState("");
@@ -14,7 +13,7 @@ function Weather() {
   const [position, setPosition] = useState([])
   const [weatherData, setWeatherData] = useState("")
 
-  const apiKey = "d4ef3671c18ff18482439536bbb0fa40";
+  const apiKey = "0332bea479abd00765b838a8f968ed52";
 
   // useEffect(() => {
   //   if (markers.length > 0) {
@@ -44,13 +43,13 @@ function Weather() {
 
   
 
-  const location = useSelector((state) => state.markers)
-  console.log(location)
+  // const location = useSelector((state) => state.markers)
+  // console.log(location)
 
   function search() {
     // let geoApiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&units=metric&appid=${apiKey}`;
-    // let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`;
-    // axios.get(apiUrl).then(getWeather);
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`;
+    axios.get(apiUrl).then(getWeather);
   }
   function handleSubmit(event) {
     event.preventDefault();

@@ -8,7 +8,7 @@ import Button from "react-bootstrap/Button";
 
 import "./style.css";
 
-function Register( {show, handleClose }) {
+function Register({ show, handleClose }) {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -18,43 +18,47 @@ function Register( {show, handleClose }) {
 
   const history = useHistory();
 
+    const usernameValidationMessage =
+      "Your username should contain only letters!";
+    const passwordValidationMessage =
+      "Please enter password between 6 and 16 characters!";
+    const confirmPasswordValidationMessage =
+      "Your passwords should match";
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const res = await dispatch(userRegister(username, password));
+    const res = await dispatch(userRegister(username, email, password));
     // if (res) {
     //   history.push("/profile");
     // }
     // if (password !== confirmPassword) {
     //   alert("passwords should match");
-    // } else if 
+    // } else if
     //   (password.length < 5) {
     //   alert("password must be atleast 5 characters");
     // } else if (res){
     //   history.push("/profile");
     // }
-     {
-       (() => {
-         switch (status) {
+    {
+      (() => {
+        switch (status) {
           case password.length < 5:
-             return alert("password must be atleast 5 characters");
+            return alert("password must be atleast 5 characters");
           case password !== confirmPassword:
-             return alert("passwords should match");
+            return alert("passwords should match");
           case res:
-             return history.push("/profile");
-           default:
-             return null;
-         }
-       })();
-     }
+            return history.push("/profile");
+          default:
+            return null;
+        }
+      })();
+    }
   };
 
   const handleUsernameEntry = (e) => {
     setUsername(e.target.value);
   };
-  // const handleEmailEntry = (e) => {
-  //   setEmail(e.target.value)
-  // }
- 
+
   const handleEmailEntry = (e) => {
     setEmail(e.target.value);
   };
@@ -69,8 +73,7 @@ function Register( {show, handleClose }) {
   };
 
   const handlePasswordEntry = (e) => {
-      setPassword(e.target.value);
-    
+    setPassword(e.target.value);
   };
 
   return (
@@ -86,11 +89,12 @@ function Register( {show, handleClose }) {
               <Form.Control
                 type="text"
                 placeholder="Enter username"
-                required
-                minLength="3"
-                maxLength="20"
+                pattern={"[A-Za-z]+"}
+                minLength={3}
+                required={true}
                 onChange={handleUsernameEntry}
                 value={username}
+                validationmessage={usernameValidationMessage}
               />
             </Form.Group>
 
@@ -99,10 +103,10 @@ function Register( {show, handleClose }) {
               <Form.Control
                 type="email"
                 placeholder="Enter email"
-                required
+                required={true}
                 onChange={handleEmailEntry}
                 value={email}
-                pattern="/@/"
+                pattern={"/@/"}
               />
               <Form.Text className="text-muted">
                 We'll never share your email with anyone else.
@@ -114,11 +118,12 @@ function Register( {show, handleClose }) {
               <Form.Control
                 type="password"
                 placeholder="Password"
-                required
-                minLength="5"
-                maxLength="20"
+                required={true}
+                minLength={6}
+                maxLength={18}
                 onChange={handlePasswordEntry}
                 value={password}
+                validationmessage={passwordValidationMessage}
               />
             </Form.Group>
 
@@ -127,14 +132,16 @@ function Register( {show, handleClose }) {
               <Form.Control
                 type="password"
                 placeholder="Password"
-                required
+                required={true}
                 onChange={handlePasswordConfirmEntry}
-                minLength="5"
-                maxLength="20"
+                minLength={6}
+                maxLength={18}
                 value={confirmPassword}
+                validationmessage={confirmPasswordValidationMessage}
               />
             </Form.Group>
             <Button
+              required
               variant="dark"
               type="submit"
               form="registerForm"
