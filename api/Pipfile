@@ -5,7 +5,7 @@ name = "pypi"
 
 [packages]
 flask = "*"
-flask-cors = "*
+flask-cors = "*"
 gunicorn = "*"
 flask-sqlalchemy = "*"
 pytest = "*"
