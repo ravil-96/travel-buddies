@@ -32,7 +32,6 @@ export const loadHoliday = (id) => {
     return async (dispatch) => {
         try {
             const { data } = await axios.get(`http://localhost:5000/holidays/${id}`)
-        
             let markers = data.markers
             let holiday = data.holiday
             dispatch({
@@ -44,6 +43,28 @@ export const loadHoliday = (id) => {
             //     payload: holiday
             // })
         } catch (err) {
+            dispatch({
+                type: 'SET_ERROR',
+                payload: err
+            })
+        }
+    }
+}
+
+export const loadMembers = (id) => {
+    return async (dispatch) => {
+        try {
+            const { data } = await axios.get(`http://localhost:5000/holidays/${id}/users`)
+            dispatch({
+                type: 'LOAD_MEMBERS',
+                payload: data
+            })
+            // dispatch({
+            //     type: 'LOAD_HOLIDAY_INFO',
+            //     payload: holiday
+            // })
+        } catch (err) {
+            console.log(err)
             dispatch({
                 type: 'SET_ERROR',
                 payload: err

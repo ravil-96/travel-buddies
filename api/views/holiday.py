@@ -24,7 +24,7 @@ def add_holiday_user_route(id):
         return jsonify({"users": users, "creator": creator})
     else:  
         data = request.get_json()
-        res = add_holiday_user(data['user_id'], id)
+        res = add_holiday_user(id, data['user_id'], )
         if res == False:
             return jsonify({"msg": "error"})
         else: 
