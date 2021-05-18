@@ -25,10 +25,10 @@ def create_marker(new_title, new_desc, new_position_lat, new_position_long, new_
     db.session.commit()
     return marker
 
-def delete_marker(id):
-    marker = Markers.query.get_or_404(id)
-    db.session.delete(marker)
-    db.session.commit()
-    flash('You have successfully deleted the marker')
+# def delete_marker(id):
+#     marker = Markers.query.get_or_404(id)
+#     db.session.delete(marker)
+#     db.session.commit()
+#     flash('You have successfully deleted the marker')
 
 
