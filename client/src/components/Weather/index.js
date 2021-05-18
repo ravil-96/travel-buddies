@@ -1,18 +1,24 @@
-import React, {useState} from "react";
+import React, { useState, useEffect } from "react";
 import axios from 'axios'
 import WeatherIcon from "../WeatherIcon";
 import { useSelector, useDispatch } from "react-redux";
+import {MarkerModal, MapSearch} from '../MarkerModal'
+import {Holiday} from '../../pages'
 
 function Weather() {
   const [city, setCity] = useState("");
   const [weatherData, setWeatherData] = useState("")
+  const [markerLocation, setMarkerLocation] = useState(['',''])
 
-  const lat = useSelector((state) => state.lat);
-  const long = useSelector((state) => state.long);
-  const title = useSelector((state) => state.title);
-console.log(lat)
-console.log(long);
-console.log(title)
+  const lat = useSelector((state) => state.markers);
+  const long = useSelector((state) => state.markers.long);
+
+ 
+ 
+//   const title = useSelector((state) => state.markers.title);
+// console.log(lat)
+// console.log(long);
+// console.log(title)
 
   const apiKey = "d4ef3671c18ff18482439536bbb0fa40";
 
