@@ -12,4 +12,5 @@ export { default as MarkerCards } from "./MarkerCards";
 export { default as CardContainer } from "./CardContainer";
 export { default as ChatBox } from "./ChatBox";
 export { default as AddMember } from "./AddMember";
-
+export { default as LogoutButton } from "./LogoutButton";
+export { default as UserAvatar } from "./UserAvatar";
