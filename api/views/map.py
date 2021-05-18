@@ -1,6 +1,6 @@
 from flask import request, jsonify
 
-from models import Markers, create_marker, delete_marker
+from models import Markers, create_marker
 from app import app
 
 # maps data routes

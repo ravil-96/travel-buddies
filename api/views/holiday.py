@@ -1,6 +1,6 @@
 from flask import request, jsonify
 
-from models import Holidays, create_holiday, get_holiday, get_holiday_users, add_holiday_user
+from models import Holidays, create_holiday, get_holiday, get_holiday_users, add_holiday_user, get_holiday_owner
 from app import app
 
 # maps data routes
@@ -19,11 +19,15 @@ def get_holiday_route(id):
 @app.route('/holidays/<id>/users', methods=['GET', 'POST'])
 def add_holiday_user_route(id):
     if request.method == 'GET':    
-        holiday = get_holiday_users(id)
-        return jsonify({"msg": holiday})
+        users = get_holiday_users(id)
+        creator = get_holiday_owner(id)
+        return jsonify({"users": users, "creator": creator})
     else:  
         data = request.get_json()
-        add_holiday_user(id, data['user_id'])
-        return jsonify({"data": "success"})    
+        res = add_holiday_user(id, data['user_id'], )
+        if res == False:
+            return jsonify({"msg": "error"})
+        else: 
+            return jsonify({"data": "success"})    
 
 

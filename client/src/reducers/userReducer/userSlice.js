@@ -20,6 +20,11 @@ const userReducer = (state = { logged_in: false, holidays: []}, action) => {
           ...state,
           socket: action.payload
         };
+      case "ADD_CHAT":
+          return {
+            ...state,
+            chat: action.payload
+          };
       case "LOAD_HOLIDAYS":
           return {
             ...state,

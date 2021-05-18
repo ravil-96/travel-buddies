@@ -1,5 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import { LogoutButton } from "../../components"
 
 function NavBar() {
   return (
@@ -13,6 +14,7 @@ function NavBar() {
       <NavLink to="/holidays/3" activeClassName="current">
         temp link room3
       </NavLink>
+      <LogoutButton />
     </nav>
   );
 }

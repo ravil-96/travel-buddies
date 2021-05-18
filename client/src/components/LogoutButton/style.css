@@ -1,8 +1,5 @@
 #logout-button{
-    width: 80px;
-    height: 29px;
     position: fixed;
     top: 1rem;
     right: 5rem;
-    font-size: 0.75rem
 }

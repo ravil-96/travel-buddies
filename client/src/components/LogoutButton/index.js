@@ -8,8 +8,8 @@ function LogoutButton() {
 
     function handleLogOut() {
         // sessionStorage.setItem("userToken", '');
-        sessionStorage.clear();
-        history.push("/"); 
+        localStorage.clear();
+        history.go("/"); 
     }
   return (
     <Button id="logout-button" variant="dark" onClick={handleLogOut}>
