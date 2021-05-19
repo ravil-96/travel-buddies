@@ -11,7 +11,7 @@ function App() {
     <>
       <Switch>
         <Route exact path="/" component={Home} />
-        <PrivateRoute path="/profile/" component={Profile} />
+        <Route path="/profile/" component={Profile} />
         <AuthRoute path="/holidays/:id" component={Holiday} key={Math.random()} />
         <Route path="/" component={PageNotFound} />
       </Switch>
