@@ -1,13 +1,14 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import io from "socket.io-client";
+import { socketUrl } from '../../api'
 import { addSocket, currentMembers, addMarker, addChat } from '../../actions'
 
 function useSocket(id){
     const user = useSelector(state => state.user.user)
     const dispatch = useDispatch()
     useEffect(() => {
-        const socket = io('http://localhost:3000')
+        const socket = io(`${socketUrl}`)
         dispatch(addSocket(socket))
         socket.emit("join", {room: id, username: user});
   
