@@ -1,4 +1,5 @@
 import Profile from ".";
+import { render, screen } from "@testing-library/react";
 
 describe("Profile", () => {
   test("it renders a div", () => {

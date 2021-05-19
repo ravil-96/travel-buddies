@@ -27,7 +27,7 @@ function Register({ handleUsernameEntry, handleEmailEntry, handlePasswordEntry, 
 
         <Form.Group controlId="formBasicRegisterPasswordConfirm">
           <Form.Label>Confirm password</Form.Label>
-          <Form.Control type="password" placeholder="Password" required onChange={handlePasswordConfirmEntry}/>
+          <Form.Control type="password" placeholder="Confirm password" required onChange={handlePasswordConfirmEntry}/>
         </Form.Group>
       </Form>
     </div>
