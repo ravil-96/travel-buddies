@@ -1,0 +1,16 @@
+.map-card-box{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.card-container-wrapper {
+    height: 400px;
+    overflow-y: auto;
+    width: auto;
+    max-width: 25%
+}
+
+#dropdown-basic-search::after{
+    display: none; 
+ }

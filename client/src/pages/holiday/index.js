@@ -1,30 +1,66 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux"
+import { MapSearch, Weather, MyMap, MarkerModal, CardContainer, MarkerCards, ChatBox, AddMember, LogoutButton, MembersList } from "../../components";
+import { NavBar } from "../../layout"
+import { useParams } from "react-router-dom"
+import { useSocket } from '../../customHooks'
+import { clearMarkers, loadHoliday, clearChat, loadMembers } from '../../actions'
+import ButtonToolbar from 'react-bootstrap/ButtonToolbar'
 
 function Holiday() {
-  
-  function fetchLocation() {
-    return;
+  const { id } = useParams()
+  useSocket(id)
+  const mySocket = useSelector(state => state.user.socket) 
+
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
+    // the function to update state which is sent to the AddMarker componenet
+  // again this can be moved elsewhere as it becomes more complex
+  const [markerLocation, setMarkerLocation] = useState(['',''])
+  function handleClick(location) {
+    console.log(location)
+    setMarkerLocation(location)
+    handleShow()
   }
 
-  const YOUR_API_KEY = "YW2K9K5RYO7KkFhmAyNq";
+  const dispatch = useDispatch()
+  useEffect(() => {
+    dispatch(clearMarkers())
+    dispatch(clearChat())
+    console.log("reloaded")
+    dispatch(loadHoliday(id))
+    dispatch(loadMembers(id))
+  },[id])
+  
 
-  const url = `https://geocoder.ls.hereapi.com/search/6.2/geocode.json
-?languages=en-US
-&maxresults=4
-&searchtext=Sunnyvale
-&apiKey=${YOUR_API_KEY}`;
 
-  axios.get(url);
+
 
   return (
-    <div>
-      <h1>Profile page</h1>;
-      <form>
-        <input type="search" />
-      </form>
-      <button onClick={fetchLocation}></button>
-      
-    </div>
+    <>
+    <NavBar />
+      <Weather />
+      <MarkerModal
+        show={show}
+        handleClose={handleClose}
+        location={markerLocation}
+      />
+      <ButtonToolbar aria-label="Toolbar with button groups">
+        <MapSearch handleClick={handleClick} />
+        <AddMember />
+        <MembersList />
+      </ButtonToolbar> 
+      <div className="map-card-box">
+        <MyMap handleClick={handleClick}/>
+        <CardContainer>
+          <MarkerCards />
+        </CardContainer>
+      </div>
+     
+      <ChatBox />
+    </>
   );
 }
 

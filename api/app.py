@@ -1,40 +1,30 @@
 from flask import Flask, jsonify, request
 from flask_cors import CORS
 from flask_sqlalchemy import SQLAlchemy
+from flask_migrate import Migrate
+import os 
 
 app = Flask(__name__)
 CORS(app)
-
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql+psycopg2://user:password@db'
+uri = os.getenv("DATABASE_URL")  # or other relevant config var
+if uri:
+    if uri.startswith("postgres://"):
+        uri = uri.replace("postgres://", "postgresql://", 1)
+app.config['SQLALCHEMY_DATABASE_URI'] = uri or 'postgresql+psycopg2://user:password@db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 
 db = SQLAlchemy(app)
 
-class Users(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(80), unique=False, nullable=False)
-    email = db.Column(db.String(120), unique=False, nullable=False)
 
-    def __repr__(self):
-        return '<User %r>' % self.username
+db.init_app(app)
+db.metadata.clear()
+migrate = Migrate(app, db)
 
-class Holidays(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(80), unique=False, nullable=False)
-    desc = db.Column(db.String(120), unique=False, nullable=False)
+# importing the models to make sure they are known to Flask-Migrate
+from models import *
+from views import auth, map, holiday, user
+# any other registrations; blueprints, template utilities, commands
 
-    def __repr__(self):
-        return '<Holiday %r>' % self.name
-
+print("Creating database tables...ok!")
 db.create_all()
-admin = Users(username='admin', email='admin@example.com')
-
-hol1 = Holidays(name='chris\'s holiday', desc='wow, so fun!')
-
-db.session.add(admin)
-db.session.add(hol1)
-db.session.commit()
-
-@app.route('/')
-def home():
-    return jsonify({'message': 'hello'}), 200
+print("Done!")

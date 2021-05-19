@@ -1,33 +1,40 @@
-const initialState = {
-    markers: [
-        { id: 0, name: 'Empire State Building', comment: '', username: 'Beth'},
-        { id: 1, name: 'Rockefeler Centre', comment: '', username: 'Michael'},
-        { id: 2, name: 'Brooklyn Bridge', comment: '', username: 'Semhar'}
-    ],
-    // filters: {
-    //     date: ['oldest', 'latest']
-    // }
-} 
-
-function nextMarkerId(markers) {
-    const maxId = markers.reduce((maxID, marker) => Math.max(marker.id, maxId), -1)
-    return maxId + 1
-}
+const initialState = []
 
 const markersReducer = (state=initialState, action) => {
     switch(action.type) {
-        case 'markers/markerAdded':
+        case 'LOAD_MARKERS': {
+            return [
+                ...action.payload.map(m => ({title: m.title, desc: m.desc, position: [m.position_lat, m.position_long]}))
+            ]
+        }
+        case 'ADD_MARKER': {
             return [
                 ...state,
-                {
-                id: nextMarkerId(state),
-                name: action.payload,
-                comment: action.payload
-                }
+                {position:action.payload.location, title:action.payload.title, desc:action.payload.desc}
             ] 
-        
+        }    
+        case 'CLEAR_MARKERS': {
+            return [] 
+        }  
+        case 'SELECT_MARKER': {
+            return state.map((marker) => {
+                if (marker.id !== action.payload) {
+                    return marker
+                }
+
+                return {
+                    ...marker,
+                    long: marker.long,
+                    lat: marker.lat,
+                }
+            })
+        }
+        case 'DELETE_MARKER': {
+            return state.filter((marker) => marker.id !== action.payload)
+        }
         default:
             return state;
     }
 }
+
 export default markersReducer
