@@ -1,5 +1,8 @@
 # Travel Buddies
 
+## website
+https://travel-buddies.netlify.app/ 
+
 ## usage
 - start the backend processes
     - `docker compose build` (you will need to run this if you make changes to Dockerfiles or want to install new modules)
@@ -17,3 +20,5 @@
         - access at `localhost:8080` 
 
 - end docker processes with `docker compose down` or `ctrl-c` or `bash _scripts/teardown.sh` 
+
+
