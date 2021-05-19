@@ -49,7 +49,7 @@ function ChatBox() {
 
   if (!show) {
     return (
-      <Button onClick={handleShow} className="chat-button" variant="secondary">
+      <Button onClick={handleShow} className="chat-button" variant="secondary" title="show messages">
         <MdChat />
       </Button>
     );
