@@ -8,6 +8,17 @@
     "coverage": "jest --setupFilesAfterEnv ./src/test/setupTests.js --coverage --silent --watchAll=false",
     "dev": "webpack-cli serve --mode development --config config/webpack.config.dev.js",
     "build": "webpack --config config/webpack.config.production.js"
+    
+  },
+  "jest": {
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
+      "\\.(css|less)$": "<rootDir>/__mocks__/styleMock.js"
+    },
+    "coveragePathIgnorePatterns": [
+      "/node_modules/",
+      "/actions/"
+    ]
   },
   "author": "",
   "license": "ISC",
