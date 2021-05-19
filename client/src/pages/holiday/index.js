@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux"
 import { MapSearch, Weather, MyMap, MarkerModal, CardContainer, MarkerCards, ChatBox, AddMember, LogoutButton, UserAvatar } from "../../components";
-import { NavBar } from "../../layout"
+import { Header } from "../../layout"
 import { useParams } from "react-router-dom"
 import { useSocket } from '../../customHooks'
 import { clearMarkers, loadHoliday, clearChat } from '../../actions'
@@ -39,7 +39,7 @@ function Holiday() {
 
   return (
     <>
-    <NavBar />
+    <Header />
       <Weather />
       <MarkerModal
         show={show}

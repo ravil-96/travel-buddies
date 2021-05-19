@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { MyMap, NewHolidayButton, HolidayCards, CardContainer, LogoutButton, UserAvatar} from "../../components"
-import { NavBar } from "../../layout"
+import { Header } from "../../layout"
 import { useDispatch, useSelector } from "react-redux"
 import { loadUserHolidays } from "../../actions"
 
@@ -12,7 +12,7 @@ function Profile() {
   },[])
   return (
     <div>
-      <NavBar />
+      <Header/>
       <h1>Profile page</h1>
       <NewHolidayButton />
       <div className="map-card-box">

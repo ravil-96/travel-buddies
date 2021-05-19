@@ -3,17 +3,20 @@ import { NavLink } from "react-router-dom";
 
 function NavBar() {
   return (
-    <nav>
-      <NavLink exact to="/" activeClassName="current">
-        Home
-      </NavLink>
-      <NavLink to="/profile" activeClassName="current">
-        Profile
-      </NavLink>
-      <NavLink to="/holidays/3" activeClassName="current">
-        temp link room3
-      </NavLink>
-    </nav>
+    <Header>
+         <nav id="nav-links">
+        <NavLink to="/profile" activeClassName="current">
+          Profile
+        </NavLink>
+        <NavLink to="/holidays/3" activeClassName="current">
+          temp link room3
+        </NavLink>
+      </nav>
+      <Link exact to="/" activeClassName="current">
+        <img src="https://i.imgur.com/KvFHW2R.png" />
+      </Link>
+</Header>
+    
   );
 }
 
