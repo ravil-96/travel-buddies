@@ -58,7 +58,7 @@ function ChatBox() {
       <>
         <div className="chat-box">
           <div className="message-box">
-            <MessageList />
+            <MessageList title="message list"/>
           </div>
 
           <Form onSubmit={(e) => handleSend(e)}>

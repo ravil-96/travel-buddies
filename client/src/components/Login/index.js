@@ -30,9 +30,7 @@ const handleSubmit = async (e) => {
 const handleUsernameEntry = (e) => {
   setUsername(e.target.value)
 }
-const handleEmailEntry = (e) => {
-  setEmail(e.target.value)
-}
+
 const handlePasswordEntry = (e) => {
   setPassword(e.target.value);
 };

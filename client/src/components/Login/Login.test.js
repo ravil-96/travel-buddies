@@ -1,5 +1,11 @@
 import Login from "./index";
+import Profile from "../../pages/Profile";
 import { render, screen } from "@testing-library/react";
+import { createMemoryHistory } from "history";
+import React from "react";
+import userEvent from "@testing-library/user-event";
+import { Router } from "react-router-dom";
+import "@testing-library/jest-dom/extend-expect";
 
 describe("Login", () => {
   beforeEach(() => {
@@ -23,6 +29,16 @@ describe("Login", () => {
 
   test("it renders a login form, with a password field", () => {
     expect(screen.getByPlaceholderText("Password")).toBeInTheDocument();
+  });
+
+  test("it redirects user to their profile page after a successful login", () => {
+
+    jest.mock("react-router-dom", () => ({
+      ...jest.requireActual("react-router-dom"),
+      useHistory: () => ({
+        push: jest.fn(),
+      }),
+    }));
   });
 
   //   test("it sets username", () => {

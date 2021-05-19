@@ -1,8 +1,8 @@
 import Profile from ".";
-import { render, screen } from "@testing-library/react";
+import { screen } from "@testing-library/react";
 
 describe("Profile", () => {
-  test("it renders a div", () => {
+  test("it renders a the profile page", () => {
     renderWithReduxProvider(<Profile />);
     const div = screen.getByRole("ProfilePage");
     expect(div).toBeInTheDocument();

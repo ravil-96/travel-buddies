@@ -18,4 +18,8 @@ describe("Chat box", () => {
     userEvent.click(chat);
     expect(stubMessages).toHaveBeenCalledTimes(1);
   });
+
+  test("it renders a message list", () => {
+    expect(screen.getByRole("message list")).toBeInTheDocument();
+  });
 });
