@@ -2,7 +2,33 @@ import React from 'react';
 import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import '@testing-library/jest-dom/extend-expect';
+import "@testing-library/jest-dom";
+import { Provider } from "react-redux";
+import { createStore, applyMiddleware } from "redux";
+import thunk from "redux-thunk";
+import myReducer from "../features";
+import { MemoryRouter } from "react-router-dom";
 
+const TestProviders = ({ initState }) => {
+  initState ||= { users: [], loading: false };
+  const testStore = createStore(
+    () => myReducer(initState, { type: "@@INIT" }),
+    applyMiddleware(thunk)
+  );
+
+  return ({ children }) => (
+    <Provider store={testStore}>
+      <MemoryRouter>{children}</MemoryRouter>
+    </Provider>
+  );
+};
+
+const renderWithReduxProvider = (ui, options = {}) => {
+  let TestWrapper = TestProviders(options);
+  render(ui, { wrapper: TestWrapper, ...options });
+};
+
+global.renderWithReduxProvider = renderWithReduxProvider;
 global.React = React;
 global.render = render;
 global.userEvent = userEvent;
