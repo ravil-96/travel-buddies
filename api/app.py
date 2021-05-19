@@ -25,9 +25,6 @@ from models import *
 from views import auth, map, holiday, user
 # any other registrations; blueprints, template utilities, commands
 
-
-
-# print("Creating database tables...ok!")
+print("Creating database tables...ok!")
 db.create_all()
-# print("Done!")
-
+print("Done!")
