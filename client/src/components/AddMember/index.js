@@ -4,13 +4,17 @@ import ListGroup from  "react-bootstrap/ListGroup";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { fetchUsers, addHolidayMember } from "../../api"
+import { useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 
 function DropdownList( { items } ){
     const { id } = useParams()
+    const mySocket = useSelector(state => state.user.socket)
 
-  function handleHandleClick(data){
-    addHolidayMember({id: data.id, user_id: id})
+  async function handleHandleClick(data){
+    const member = await addHolidayMember({id: data.id, user_id: id})
+    if (member.data == 'success')
+      {mySocket.emit("add member", {room: id, username: data.username})}
   }
   const list = items.map((d, i) => {
     return (
