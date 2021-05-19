@@ -27,11 +27,13 @@ function Holiday() {
 
   const dispatch = useDispatch()
   useEffect(() => {
-    dispatch(clearMarkers())
-    dispatch(clearChat())
-    console.log("reloaded")
-    dispatch(loadHoliday(id))
-    dispatch(loadMembers(id))
+    console.log(id)
+    if (id) {
+      dispatch(clearMarkers())
+      dispatch(clearChat())
+      dispatch(loadHoliday(id))
+      dispatch(loadMembers(id))
+    }
   },[id])
   
 
