@@ -57,7 +57,7 @@ export default function MapSearch( { handleClick }) {
             onChange={handleInput}
           />
         </Form.Group>
-        <Button style={{display: 'inline'}} variant="primary" type="submit" value="search">
+        <Button style={{display: 'inline'}} variant="primary" type="submit" value="search" >
           Search
         </Button>
         </Form>
