@@ -28,7 +28,7 @@ def login():
         if res:
             return jsonify({"msg": f'{data["username"]}', "id": res, "token": jwt_user(data["username"])})
         else:
-            return jsonify({'msg': f'{res}',}), 200
+            return jsonify({'msg': f'{res}',}), 401
 
 @app.route('/users/<username>', methods=['GET'])
 def user(username):

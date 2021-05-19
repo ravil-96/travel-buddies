@@ -15,7 +15,7 @@ describe("MarkerCard", () => {
   });
   test("it renders a button", () => {
     expect(
-      screen.getAllByLabelText("button", { name: "X", hidden: true })
+      screen.getAllByLabelText("button", { name: "x", hidden: true })
     ).toBeInTheDocument();
   });
 

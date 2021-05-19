@@ -21,10 +21,10 @@ function MarkerModal({ show, handleClose, location }) {
   };
 
   const mySocket = useSelector(state => state.user.socket)
-  function handleCreate(e){
+  async function handleCreate(e){
     e.preventDefault()
-    mySocket.emit("add marker", {room: id, marker: {location, title, desc}});
-    sendMarker({room: id, position_lat: location[0], position_long: location[1], title: title, desc: desc})
+    const marker = await sendMarker({room: id, position_lat: location[0], position_long: location[1], title: title, desc: desc})
+    mySocket.emit("add marker", {room: id, marker: {location, title, desc, id: marker.id}});
     handleClose()
   }
 

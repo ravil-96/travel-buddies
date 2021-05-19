@@ -3,7 +3,7 @@ import axios from 'axios';
 
 export const sendMarker = async (marker) => {
         try {
-            await axios.post(`${apiUrl}/maps/marker`, 
+            const { data } = await axios.post(`${apiUrl}/maps/marker`, 
             {
                 title: marker.title,
                 desc: marker.desc,
@@ -12,9 +12,19 @@ export const sendMarker = async (marker) => {
                 holiday_id: marker.room
             }
             )
+            return data
         } catch (err) {
             console.warn(err.message)
         }
+}
+
+export const deleteMarker = async (mi) => {
+    try {
+        const { data } = await axios.delete(`${apiUrl}/maps/marker/${mi}`)
+        return data
+    } catch (err) {
+        console.warn(err.message)
+    }
 }
 
 export const sendHoliday = async (holiday) => {
@@ -43,3 +53,4 @@ export const addHolidayMember = async (hu) => {
         console.warn(err.message)
     }
 }
+
