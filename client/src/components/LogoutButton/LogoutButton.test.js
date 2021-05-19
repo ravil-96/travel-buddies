@@ -4,7 +4,7 @@ import userEvent from "@testing-library/user-event";
 
 describe("Logout button", () => {
   beforeEach(() => {
-    renderWithReduxProvider(<LogoutButton handleClick={stubHandleClick} />);
+    renderWithReduxProvider(<LogoutButton />);
   });
 
   test("it renders a logout button", () => {
