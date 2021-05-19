@@ -17,6 +17,15 @@ export const sendMarker = async (marker) => {
         }
 }
 
+export const deleteMarker = async (mi) => {
+    try {
+        const { data } = await axios.delete(`${apiUrl}/maps/marker/${mi}`)
+        return data
+    } catch (err) {
+        console.warn(err.message)
+    }
+}
+
 export const sendHoliday = async (holiday) => {
     try {
         const { data } = await axios.post(`${apiUrl}/holidays`, 
@@ -43,3 +52,4 @@ export const addHolidayMember = async (hu) => {
         console.warn(err.message)
     }
 }
+
