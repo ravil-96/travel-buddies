@@ -3,7 +3,7 @@ import axios from 'axios';
 
 export const sendMarker = async (marker) => {
         try {
-            await axios.post(`${apiUrl}/maps/marker`, 
+            const { data } = await axios.post(`${apiUrl}/maps/marker`, 
             {
                 title: marker.title,
                 desc: marker.desc,
@@ -12,6 +12,7 @@ export const sendMarker = async (marker) => {
                 holiday_id: marker.room
             }
             )
+            return data
         } catch (err) {
             console.warn(err.message)
         }
