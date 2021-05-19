@@ -2,7 +2,7 @@ import React from "react";
 
 function Footer() {
   return (
-    <div>
+    <div role="footer">
       <span id="footer"> Created by Chris, Ravil and Semhar </span>
     </div>
   );

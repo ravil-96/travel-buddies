@@ -40,6 +40,14 @@ def test_disconnect():
 def add_marker(data):
     emit('server marker', data['marker'], to=data['room'])
 
+@socketio.on('add member')
+def add_marker(data):
+    emit('server add member', data['username'], to=data['room'])
+
+@socketio.on('delete marker')
+def delete_marker(data):
+    emit('server delete marker', data['marker'], to=data['room'])
+
 @socketio.on('client message')
 def add_message(data):
     emit('server message', data['message'], to=data['room'])

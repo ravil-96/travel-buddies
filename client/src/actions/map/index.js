@@ -2,6 +2,8 @@ import axios from 'axios'
 import { apiUrl } from '../../api'
 
 export const addMarker = (marker)=> ({type: 'ADD_MARKER', payload: marker}) 
+export const deleteMarker = (marker)=> ({type: 'DELETE_MARKER', payload: marker}) 
+
 
 // export const deleteMarker = (marker) => ({type: 'DELETE_MARKER', payload: marker})
 
