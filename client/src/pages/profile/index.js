@@ -5,7 +5,7 @@ import {
   HolidayCards,
   CardContainer,
 } from "../../components";
-import { NavBar, Footer } from "../../layout";
+import { NavBar, Footer, Header} from "../../layout";
 import { useDispatch, useSelector } from "react-redux";
 import { loadUserHolidays } from "../../actions";
 import './style.css'
@@ -16,9 +16,12 @@ function Profile() {
   useEffect(() => {
     dispatch(loadUserHolidays(id));
   }, []);
-  return (
+  return (  
+    <>
+  <Header /><NavBar />
     <div role="ProfilePage" id="profile-page">
-      <NavBar />
+    
+      
       <h4 id="profile-welcome-message">Hi user,</h4>
       
       
@@ -33,6 +36,7 @@ function Profile() {
       </div>
       <Footer />
     </div>
+    </>
   );
 }
 
