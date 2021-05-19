@@ -6,13 +6,13 @@ import './style.css'
 
 function Home(){
     return ( 
-    <>
+    <div role="homepageContainer">
         <Header />  
         <div class="row"> 
             <div class="column"><img src="https://i.imgur.com/O3N7N6x.png"/></div>
             <div class="column"><Login /></div>
         </div> 
-    </>
+    </div>
     )
 }
 

@@ -2,31 +2,32 @@ import React from 'react';
 import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import '@testing-library/jest-dom/extend-expect';
-import "@testing-library/jest-dom";
 import { Provider } from "react-redux";
 import { createStore, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
-import myReducer from "../features";
-import { MemoryRouter } from "react-router-dom";
+
+import rootReducer from '../reducer'
 
 const TestProviders = ({ initState }) => {
-  initState ||= { users: [], loading: false };
+  initState ||= { doggos: [], loading: false };
   const testStore = createStore(
-    () => myReducer(initState, { type: "@@INIT" }),
+    () => rootReducer(initState, { type: "@@INIT" }),
     applyMiddleware(thunk)
   );
 
-  return ({ children }) => (
-    <Provider store={testStore}>
-      <MemoryRouter>{children}</MemoryRouter>
-    </Provider>
-  );
+  return ({ children }) => <Provider store={testStore}>{children}</Provider>;
 };
+
+
 
 const renderWithReduxProvider = (ui, options = {}) => {
   let TestWrapper = TestProviders(options);
   render(ui, { wrapper: TestWrapper, ...options });
 };
+
+import axios from "axios";
+jest.mock("axios");
+axios.get.mockResolvedValue({ data: { message: [] } });
 
 global.renderWithReduxProvider = renderWithReduxProvider;
 global.React = React;
