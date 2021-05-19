@@ -4,7 +4,7 @@ import Dropdown from "react-bootstrap/Dropdown";
 import ListGroup from  "react-bootstrap/ListGroup";
 import { FaUserFriends, FaUser } from 'react-icons/fa'
 
-function DropdownList( ){
+export const DropdownList = ( ) => {
   const {creator, members, currentMembers}  = useSelector(state => state.members)
 
   const memlist = [creator].concat(members).map(m => m.username)
@@ -27,7 +27,7 @@ function DropdownList( ){
 }
 
 
-function MembersList() {
+const MembersList = () => {
 
   return (
     <Dropdown style={{zIndex: '1001'}}>
