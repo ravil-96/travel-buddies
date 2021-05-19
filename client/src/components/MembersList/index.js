@@ -31,7 +31,7 @@ function MembersList() {
 
   return (
     <Dropdown style={{zIndex: '1001'}}>
-        <Dropdown.Toggle variant="success" id="dropdown-basic-search">Holiday Members <FaUserFriends/></Dropdown.Toggle>
+        <Dropdown.Toggle variant="success" id="dropdown-basic-search">Holiday members <FaUserFriends/></Dropdown.Toggle>
         <Dropdown.Menu>
 
           <DropdownList />

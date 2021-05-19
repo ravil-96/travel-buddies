@@ -5,9 +5,10 @@ import {
   HolidayCards,
   CardContainer,
 } from "../../components";
-import { NavBar } from "../../layout";
+import { NavBar, Footer, Header} from "../../layout";
 import { useDispatch, useSelector } from "react-redux";
 import { loadUserHolidays } from "../../actions";
+import './style.css'
 
 function Profile() {
   const dispatch = useDispatch();
@@ -15,18 +16,27 @@ function Profile() {
   useEffect(() => {
     dispatch(loadUserHolidays(id));
   }, []);
-  return (
-    <div role="ProfilePage">
-      <NavBar />
-      <h1>Profile page</h1>
-      <NewHolidayButton />
+  return (  
+    <>
+  <Header /><NavBar />
+    <div role="ProfilePage" id="profile-page">
+    
+      
+      <h4 id="profile-welcome-message">Hi user,</h4>
+      
+      
       <div className="map-card-box">
-        <MyMap />
+        
         <CardContainer>
+          <p id="holidays-title">Holidays</p>
           <HolidayCards />
+          <NewHolidayButton />
         </CardContainer>
+        <MyMap />
       </div>
+      <Footer />
     </div>
+    </>
   );
 }
 
