@@ -102,5 +102,3 @@ describe('map async actions', () => {
     })
 
 })
-
-//Check coverage
