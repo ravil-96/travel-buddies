@@ -40,37 +40,45 @@ describe('map async actions', () => {
     beforeEach(() => {
         store.clearActions()
     })
-    it('dispatches LOAD_MARKERS adter a successful API request', () => {
 
-        const data = {
-            "holidays": [
-                {
-                    "creator": 2,
-                    "id": 2,
-                    "title": "Russia!"
-                }
-            ],
-            "markers": [
-                {
-                    "desc": "cool!",
-                    "holiday_id": 2,
-                    "id": 2,
-                    "position_lat": 55.806221736391876,
-                    "position_long": 37.56445527076722,
-                    "title": "Stop1"
-                },
-                {
-                    "desc": "very nice...",
-                    "holiday_id": 2,
-                    "id": 3,
-                    "position_lat": 61.64816245852389,
-                    "position_long": 82.16239754509945,
-                    "title": "Stop2"
-                }
-            ]
-        }
+    const holidayData = {
+        "holidays": [
+            {
+                "creator": 2,
+                "id": 2,
+                "title": "Russia!"
+            }
+        ],
+        "markers": [
+            {
+                "desc": "cool!",
+                "holiday_id": 2,
+                "id": 2,
+                "position_lat": 55.806221736391876,
+                "position_long": 37.56445527076722,
+                "title": "Stop1"
+            },
+            {
+                "desc": "very nice...",
+                "holiday_id": 2,
+                "id": 3,
+                "position_lat": 61.64816245852389,
+                "position_long": 82.16239754509945,
+                "title": "Stop2"
+            }
+        ]
+    }
 
-        axios.get.mockResolvedValue({data: data.holidays});
+    const membersData = {
+        "creator": {
+            "user_id": 3,
+            "username": "steve"
+        },
+        "users": []
+    }
+
+    it('dispatches LOAD_MARKERS and LOAD_HOLIDAYS after a successful API request', () => {
+        axios.get.mockResolvedValue({data: holidayData});
         store.dispatch(actions.loadUserHolidays()).then(() => {
             const expectedActions = [
                 { type: 'LOAD_MARKERS',
@@ -81,4 +89,16 @@ describe('map async actions', () => {
             expect(store.getActions()).toEqual(expectedActions)
         })
     })
+
+    it('dispatches LOAD_MEMBERS after a successful API request', () => {
+        axios.get.mockResolvedValue({data: membersData});
+        store.dispatch(actions.loadMembers()).then(() => {
+            const expectedActions = [
+                { type: 'LOAD_MEMBERS',
+                  payload: data.creator },
+            ]
+            expect(store.getActions()).toEqual(expectedActions)
+        })
+    })
+
 })
