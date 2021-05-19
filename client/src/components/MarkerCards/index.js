@@ -3,11 +3,15 @@ import { useSelector } from "react-redux";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import { deleteMarker } from "../../api"
-
+import { useParams } from "react-router-dom"
 function MarkerCards() {
+
+  const { id } = useParams()
+  const mySocket = useSelector((state) => state.user.socket);
 
   const handleClick = (d) => {
     deleteMarker(d.id)
+    mySocket.emit("delete marker", {room: id, marker: d.id});
   };
 
   const markers = useSelector((state) => state.markers);
