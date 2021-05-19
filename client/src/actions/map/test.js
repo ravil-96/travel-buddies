@@ -82,9 +82,9 @@ describe('map async actions', () => {
         store.dispatch(actions.loadUserHolidays()).then(() => {
             const expectedActions = [
                 { type: 'LOAD_MARKERS',
-                  payload: data.markers },
+                  payload: holidayData.markers },
                 { type: 'LOAD_HOLIDAYS',
-                  payload: data.holidays },
+                  payload: holidayData.holidays },
             ]
             expect(store.getActions()).toEqual(expectedActions)
         })
@@ -102,4 +102,3 @@ describe('map async actions', () => {
     })
 
 })
-// files completed
