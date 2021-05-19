@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux"
-import { MapSearch, Weather, MyMap, MarkerModal, CardContainer, MarkerCards, ChatBox, AddMember, LogoutButton, MembersList } from "../../components";
+import { MapSearch, MyMap, MarkerModal, CardContainer, MarkerCards, ChatBox, AddMember, MembersList } from "../../components";
 import { NavBar } from "../../layout"
 import { useParams } from "react-router-dom"
 import { useSocket } from '../../customHooks'
@@ -10,14 +10,11 @@ import ButtonToolbar from 'react-bootstrap/ButtonToolbar'
 function Holiday() {
   const { id } = useParams()
   useSocket(id)
-  const mySocket = useSelector(state => state.user.socket) 
 
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-    // the function to update state which is sent to the AddMarker componenet
-  // again this can be moved elsewhere as it becomes more complex
   const [markerLocation, setMarkerLocation] = useState(['',''])
   function handleClick(location) {
     console.log(location)
@@ -27,21 +24,18 @@ function Holiday() {
 
   const dispatch = useDispatch()
   useEffect(() => {
-    dispatch(clearMarkers())
-    dispatch(clearChat())
-    console.log("reloaded")
-    dispatch(loadHoliday(id))
-    dispatch(loadMembers(id))
+    if (id) {
+      dispatch(clearMarkers())
+      dispatch(clearChat())
+      dispatch(loadHoliday(id))
+      dispatch(loadMembers(id))
+    }
   },[id])
   
-
-
-
 
   return (
     <>
     <NavBar />
-      <Weather />
       <MarkerModal
         show={show}
         handleClose={handleClose}

@@ -7,10 +7,12 @@ import os
 app = Flask(__name__)
 CORS(app)
 uri = os.getenv("DATABASE_URL")  # or other relevant config var
+testuri = os.getenv("ENV")
+print(testuri)
 if uri:
     if uri.startswith("postgres://"):
         uri = uri.replace("postgres://", "postgresql://", 1)
-app.config['SQLALCHEMY_DATABASE_URI'] = uri or 'postgresql+psycopg2://user:password@db'
+app.config['SQLALCHEMY_DATABASE_URI'] = uri or 'postgresql+psycopg2://user:password@db' or 'postgresql+psycopg2://user:password@db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 
 db = SQLAlchemy(app)

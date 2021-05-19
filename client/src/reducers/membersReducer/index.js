@@ -8,6 +8,9 @@ const membersReducer = (state=initialState, action) => {
         case 'CURRENT_MEMBERS': {
             return {creator: state.creator, members: state.members,  currentMembers: action.payload}
         }
+        case 'ADD_MEMBER': {
+            return {creator: state.creator, members: state.members.concat({username: action.payload}),  currentMembers: state.currentMembers}
+        }
         case 'CLEAR_MEMBERS': {
             return {creator: {}, members: []} 
         }

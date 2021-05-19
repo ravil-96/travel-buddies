@@ -1,24 +1,17 @@
 version: '3'
 services:
-  socket:
-    build: 
-      ./socket
-    ports:
-        - "3000:3000"
-    volumes:
-        - type: bind
-          source: ./socket
-          target: /code
   api:
+    container_name: test_api
     build: 
       ./api
     ports:
         - "5000:5000"
     environment: 
+        - ENV=test
         - PGUSER=user
         - PGHOST=db
         - PGPASSWORD=password
-        - PGDATABASE=myDb
+        - PGDATABASE=testDb
         - PGPORT=5432
     volumes:
         - type: bind
@@ -28,13 +21,13 @@ services:
         - db
   db:
     image: postgres:12.4
-    ports:
-      - "5432:5432"
+    container_name: test_db
     volumes:
-      - "dbdata:/var/lib/postgresql/data"
+      - "test_db:/var/lib/postgresql/data"
     environment: 
+      - POSTGRES_DB=testDb
       - POSTGRES_USER=user
       - POSTGRES_PASSWORD=password
 volumes:
-  dbdata:
+  test_db:
    
