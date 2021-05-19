@@ -4,10 +4,16 @@ import WeatherIcon from "../WeatherIcon";
 import { useSelector, useDispatch } from "react-redux";
 import {MarkerModal, MapSearch} from '../MarkerModal'
 import {Holiday} from '../../pages'
+import { loadHoliday, addMarker } from "../../actions";
+import { useSocket } from "../../customHooks";
+
+import { useParams } from "react-router-dom";
 // const apiKey = "d4ef3671c18ff18482439536bbb0fa40";
 
 function Weather() {
   const [city, setCity] = useState("");
+   const { id, holiday, markers } = useParams();
+   useSocket(id);
   // const [markerLocation, setMarkerLocation] = useState(['',''])
 
   // const markers = useSelector((state) => state.markers);
@@ -35,9 +41,15 @@ function Weather() {
  
  
   const title = useSelector((state) => state.markers.title);
-// console.log(lat)
-// console.log(long);
+  
+  const dispatch = useDispatch();
+     dispatch(loadHoliday(id, holiday, markers));
+     dispatch(addMarker());
+     console.log(holiday);
+
+
 console.log(title)
+
 
   const apiKey = "0332bea479abd00765b838a8f968ed52";
 
