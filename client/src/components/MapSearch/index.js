@@ -15,7 +15,7 @@ function DropdownList( { items, handleClick } ){
   }
   const list = items.map((d, i) => {
     return (
-      <Dropdown.Item onClick={() => handleHandleClick(d)} key={i}>
+      <Dropdown.Item onClick={() => handleHandleClick(d)} key={i} title="dropdown search">
         {d.label}
       </Dropdown.Item>
     );
