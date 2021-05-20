@@ -9,7 +9,7 @@ function MarkerCards() {
   const { id } = useParams()
   const mySocket = useSelector((state) => state.user.socket);
 
-  const handleClick = (d) => {
+  function handleClick(d){
     deleteMarker(d.id)
     mySocket.emit("delete marker", {room: id, marker: d.id});
   };
@@ -21,19 +21,17 @@ function MarkerCards() {
   }
   const list = data.map((d, i) => {
     return (
-      <div role="markercards">
-        <Card>
-          <Card.Body style={{display: 'flex', justifyContent: 'center'}}>
+        <Card role="listitem">
+          <Card.Body style={{padding: '1.5rem .1rem'}}>
             <div style={{padding: '0 1rem'}}>
-            <Card.Subtitle className="mb-2 text-muted">{d.title}</Card.Subtitle>
+            <Card.Subtitle>{d.title}</Card.Subtitle>
             <Card.Text>{d.desc}</Card.Text>
             </div>
-            <Button variant="danger" size="sm" style={{height: 'min-content'}} onClick={() => handleClick(d)}>
+            <Button variant="danger" size="sm" style={{height: 'min-content', position: 'absolute', top: '0', right: '0'}} onClick={() => handleClick(d)}>
               x
             </Button>
           </Card.Body>
         </Card>
-      </div>
     );
   });
   return list;

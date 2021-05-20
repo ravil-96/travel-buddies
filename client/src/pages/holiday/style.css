@@ -1,0 +1,24 @@
+#holiday-page-container{
+    margin-top:0;
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+.map-card-box{
+    display: flex;
+    flex-direction: row;
+}
+
+.btn-toolbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1rem;
+}
+
+.toolbar {
+    margin: .5rem .25rem 0 0;
+    display: flex;
+}
+.toolbar > * {
+    margin: 0 .25rem
+}

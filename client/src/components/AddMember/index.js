@@ -48,7 +48,7 @@ export default function MapSearch() {
 
   return (
     <Dropdown style={{zIndex: '1001'}}>
-        <Dropdown.Toggle variant="success" id="dropdown-basic-search">Add user +</Dropdown.Toggle>
+        <Dropdown.Toggle variant="success" id="dropdown-basic-search">Add someone +</Dropdown.Toggle>
         <Dropdown.Menu>
         <Form onSubmit={(e) => {e.preventDefault()}}>
         <Form.Group controlId="formBasicSearch">
