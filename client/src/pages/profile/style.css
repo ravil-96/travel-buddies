@@ -1,8 +1,18 @@
-/* #profile-page{
-    margin: 1rem;
+/* 
+body{
     background-image: linear-gradient(#F1F8FE, #E0FBE8)
+} */
+#profile-page{
+    margin-top:0;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    
   
 }
+
+#profile-welcome-message{
+    margin-left: 2rem;
+    margin-top: 2rem;}
 
 .map-card-box{
     display: flex;
@@ -12,12 +22,12 @@
 }
 
 .card-container-wrapper {
-height: 300px;
+height: 400px;
     overflow-y: auto;
     width: auto;
     max-width: 25%;
     margin: 1.5rem;
-    padding: 2rem;
+    padding: 1.5rem;
     background-color: whitesmoke;
     border-radius: 1rem;
 }
@@ -34,14 +44,16 @@ height: 300px;
 #new-holiday-button {
     background-color: lightgreen;
     border: none;
-    position: fixed;
-    left: 2.3rem;
-    top: 31rem;
-   
+    position: relative;
+left: 0rem;
+    top: 11rem;
+       border-radius: 2rem;
+    box-shadow: 1px 1px whitesmoke
 }
 
 #holidays-title{
-    position: fixed;
-    top: 9rem;
-    left: 5.5rem;
-} */
+    position: relative;
+    top: -1rem;
+    text-align:center
+
+}

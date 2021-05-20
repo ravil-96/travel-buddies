@@ -1,0 +1,13 @@
+#navbar{
+        background-color: #3a99ff;
+    display: block;
+    width: 100%;
+    
+}
+a{
+    color:white
+}
+a:hover{
+    text-decoration: none;
+    cursor: pointer;
+}

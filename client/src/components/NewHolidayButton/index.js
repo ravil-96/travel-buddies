@@ -27,7 +27,7 @@ function NewHolidayButton() {
   
   return (
     <>
-      <Button variant="success" onClick={handleShow}>Create new holiday</Button>
+      <Button variant="success" onClick={handleShow} id="new-holiday-button">Create new holiday</Button>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>New Holiday</Modal.Title>

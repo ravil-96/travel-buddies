@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux"
 import { MapSearch, MyMap, MarkerModal, CardContainer, MarkerCards, ChatBox, AddMember, MembersList } from "../../components";
-import { NavBar } from "../../layout"
+import { Header, NavBar, Footer } from "../../layout"
 import { useParams } from "react-router-dom"
 import { useSocket } from '../../customHooks'
 import { clearMarkers, loadHoliday, clearChat, loadMembers } from '../../actions'
 import ButtonToolbar from 'react-bootstrap/ButtonToolbar'
+import './style.css'
 
 function Holiday() {
   const { id } = useParams()
@@ -35,25 +36,30 @@ function Holiday() {
 
   return (
     <>
-    <NavBar />
-      <MarkerModal
-        show={show}
-        handleClose={handleClose}
-        location={markerLocation}
-      />
-      <ButtonToolbar aria-label="Toolbar with button groups">
-        <MapSearch handleClick={handleClick} />
-        <AddMember />
-        <MembersList />
-      </ButtonToolbar> 
-      <div className="map-card-box">
-        <MyMap handleClick={handleClick}/>
-        <CardContainer>
-          <MarkerCards />
-        </CardContainer>
+      <Header />     <ButtonToolbar aria-label="Toolbar with button groups">
+          
+          <AddMember />
+          <MembersList />
+        </ButtonToolbar>
+      <NavBar />
+      <div id="holiday-page-container">
+        <MarkerModal
+          show={show}
+          handleClose={handleClose}
+          location={markerLocation}
+        />
+   
+        <div className="map-card-box">
+          <MyMap handleClick={handleClick} />
+          <CardContainer>
+            <MarkerCards />
+            <MapSearch handleClick={handleClick} />
+          </CardContainer>
+        </div>
+
+        <ChatBox />
+        <Footer />
       </div>
-     
-      <ChatBox />
     </>
   );
 }
