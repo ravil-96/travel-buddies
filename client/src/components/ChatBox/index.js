@@ -9,7 +9,7 @@ import { MdChat, MdClose } from "react-icons/md";
 function Message({ user, content }) {
   const me = useSelector((state) => state.user.user);
   return (
-    <div className={`message ${user === me ? "me" : "other"}`}>
+    <div role="listitem" className={`message ${user === me ? "me" : "other"}`}>
       <small>{user}</small>
       <div>{content}</div>
     </div>
@@ -56,7 +56,7 @@ function ChatBox() {
   } else {
     return (
       <>
-        <div className="chat-box">
+        <div role="dialog" className="chat-box">
           <div className="message-box">
             <MessageList />
           </div>

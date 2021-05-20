@@ -12,30 +12,28 @@ import './style.css'
 
 function Profile() {
   const dispatch = useDispatch();
-  const id = useSelector((state) => state.user.id);
+  const {id, user} = useSelector((state) => state.user);
   useEffect(() => {
     dispatch(loadUserHolidays(id));
   }, []);
   return (  
     <>
-  <Header /><NavBar />
-    <div role="ProfilePage" id="profile-page">
+  <NavBar />
+    <div id="profile-page">
     
-      
-      <h4 id="profile-welcome-message">Hi user,</h4>
+        <h4 style={{display: 'inline-block', marginRight: '.5rem'}} id="profile-welcome-message">Hi {user}</h4>
+        <NewHolidayButton />
       
       
       <div className="map-card-box">
-        
+
         <CardContainer>
-          <p id="holidays-title">Holidays</p>
           <HolidayCards />
-          <NewHolidayButton />
         </CardContainer>
         <MyMap />
       </div>
-      <Footer />
     </div>
+    <Footer />
     </>
   );
 }

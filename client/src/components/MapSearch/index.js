@@ -8,10 +8,8 @@ import Button from "react-bootstrap/Button";
 
 
 function DropdownList( { items, handleClick } ){
-  function handleHandleClick(data){
-    // console.log(data)
-  
-    handleClick([data.latitude, data.longitude])
+  function handleHandleClick(data){  
+    handleClick([data.latitude, data.longitude], data.label)
   }
   const list = items.map((d, i) => {
     return (
@@ -40,9 +38,7 @@ export default function MapSearch( { handleClick }) {
     e.preventDefault();
     const url = `http://api.positionstack.com/v1/forward?access_key=${apikey}&query=${location}`;
     const data = await axios.get(url);
-    setLocationData(data.data.data);
-    // console.log(data.data.data[0])
-   
+    setLocationData(data.data.data);   
   }
 
   return (
