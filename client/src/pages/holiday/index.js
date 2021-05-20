@@ -41,7 +41,7 @@ function Holiday() {
     <>
       <NavBar />
       <ButtonToolbar >
-      <h4 style={{padding: '0'}} id="profile-welcome-message">{holiday}</h4>     
+      <h4 style={{padding: '0', marginTop: "17px"}} id="profile-welcome-message">{holiday}</h4>     
       <div className="toolbar">
           <MapSearch handleClick={handleClick} />   
           <AddMember />
@@ -57,7 +57,11 @@ function Holiday() {
         />
    
         <div className="map-card-box">
-          <MyMap handleClick={handleClick} />
+          <div className="parent">
+            <MyMap handleClick={handleClick} />
+            <img id="tape1" src="https://i.imgur.com/IHw5y43.png"/>
+            <img id="tape2" src="https://i.imgur.com/IHw5y43.png"/>
+          </div>
           <CardContainer>
             <MarkerCards />
           </CardContainer>

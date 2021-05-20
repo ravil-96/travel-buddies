@@ -22,3 +22,24 @@
 .toolbar > * {
     margin: 0 .25rem
 }
+
+.parent {
+    position: relative;
+    width: 1200px;
+    top: 0;
+    left: 0;
+}
+#tape1{
+    position: absolute;
+    top: -15px;
+    left: -17px;
+    height: 50px;
+    margin-right: 200px;
+}
+
+#tape2{
+    position: absolute;
+    top: 465px;
+    right: -15px;
+    height: 50px;
+}

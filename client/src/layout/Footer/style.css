@@ -1,6 +1,19 @@
-#footer{
+/* #footer{
     font-size:0.75rem;
     text-align:right;
-        position: fixed;
     bottom: 1rem;
-}
+} */
+
+#page-container {
+    position: relative;
+  }
+  
+  #footer {
+    font-size:0.75rem;
+    bottom: 0;
+    width: 80%;
+    height: 2.5rem;  
+    margin-top: 100px;
+    margin-left: 17px;
+    display: block;
+  }
