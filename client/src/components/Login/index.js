@@ -6,6 +6,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { userLogin } from "../../actions"
 import { useHistory } from 'react-router-dom'
 
+import './style.css'
+
 function Login() {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
@@ -40,7 +42,7 @@ const handlePasswordEntry = (e) => {
   return (
     <>
     <div role="Login form">
-      <Form onSubmit={handleSubmit}>
+      <Form id="login-form" onSubmit={handleSubmit}>
         <Form.Group controlId="formBasicUsername">
           <Form.Label>Username</Form.Label>
           <Form.Control
@@ -66,7 +68,7 @@ const handlePasswordEntry = (e) => {
         <Button variant="primary" type="submit">
           Login
         </Button>
-        <Button onClick={handleShow} variant="dark">
+        <Button id="create-account" onClick={handleShow} variant="dark">
           Create New Account
         </Button>
       </Form>

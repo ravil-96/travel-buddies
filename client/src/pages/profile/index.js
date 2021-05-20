@@ -18,6 +18,7 @@ function Profile() {
   }, []);
   return (  
     <>
+  <Header />  
   <NavBar />
     <div id="profile-page">
     

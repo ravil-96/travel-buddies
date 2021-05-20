@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=PT+Serif&display=swap');
+
 #navbar{
     background-color: #3a99ff;
     display: flex;
@@ -7,10 +9,13 @@
     padding: .25rem 1rem;
     
 }
-a{
-    color:black
+nav a{
+    border-radius: 3px;
+    border: 0.5px solid #05162c;
+    cursor: pointer;
+    background-color: blue;
+    margin-left: .4rem;
 }
 a:hover{
-    text-decoration: none;
     cursor: pointer;
 }
