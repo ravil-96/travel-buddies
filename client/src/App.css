@@ -1,5 +1,3 @@
-
-
 .map-card-box{
     display: flex;
     flex-direction: row;
@@ -8,14 +6,12 @@
 }
 
 .card-container-wrapper {
-height: 300px;
+height: 400px;
     overflow-y: auto;
-    width: auto;
-    max-width: 25%;
-    margin: 1.5rem;
-    padding: 2rem;
+    overflow-x: none;
+    width: 25%;
+    margin: 1.5rem 0.5rem 1.5rem 1.5rem ;
     background-color: whitesmoke;
-    border-radius: 1rem;
 }
 
 #dropdown-basic-search::after{

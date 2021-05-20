@@ -4,6 +4,9 @@ import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import { deleteMarker } from "../../api"
 import { useParams } from "react-router-dom"
+
+import './style.css'
+
 function MarkerCards() {
 
   const { id } = useParams()
@@ -21,7 +24,7 @@ function MarkerCards() {
   }
   const list = data.map((d, i) => {
     return (
-        <Card role="listitem">
+        <Card role="listitem" id="marker-list">
           <Card.Body style={{padding: '1.5rem .1rem'}}>
             <div style={{padding: '0 1rem'}}>
             <Card.Subtitle>{d.title}</Card.Subtitle>
@@ -34,7 +37,7 @@ function MarkerCards() {
         </Card>
     );
   });
-  return list;
+  return <div className="card-container-wrapper-h">{list}</div>
 }
 
 export default MarkerCards;

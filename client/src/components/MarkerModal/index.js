@@ -28,6 +28,7 @@ function MarkerModal({ show, handleClose, location, dTitle}) {
     const marker = await sendMarker({room: id, position_lat: location[0], position_long: location[1], title: title, desc: desc})
     mySocket.emit("add marker", {room: id, marker: {location, title, desc, id: marker.id}});
     setTitle('')
+    setDesc('')
     handleClose()
   }
 
@@ -54,11 +55,13 @@ function MarkerModal({ show, handleClose, location, dTitle}) {
         </Form.Group>
 
         <Form.Group controlId="formBasicDesc">
-          <Form.Label>Title</Form.Label>
+          <Form.Label>Description</Form.Label>
           <Form.Control
             type="textarea"
             placeholder="Enter description"
             onChange={handleDescEntry}
+            value={desc}
+
           />
         </Form.Group>
 

@@ -1,9 +1,10 @@
 from app import db
 import bcrypt
 import jwt
-key='supersecret'
+import os
 from dataclasses import dataclass
 
+secret = os.getenv("SECRET_EKEY")
 @dataclass
 class Users(db.Model):
     id: int
@@ -49,7 +50,7 @@ def auth_user(new_name, new_password):
         return False
 
 def jwt_user(username):
-    encoded = jwt.encode({"username": username}, 'mynewsecret', algorithm="HS256")
+    encoded = jwt.encode({"username": username}, secret, algorithm="HS256")
     return encoded
 
 def get_all_users():

@@ -8,6 +8,8 @@ import {
   useMapEvents,
 } from "react-leaflet";
 
+import './style.css'
+
 // this component maps an array of marker data (position, title, desc) to react-leaflet components
 // currently passed as a prop but we should move that logic to redux
 function MapContent() {
@@ -43,13 +45,11 @@ function MyMap( { handleClick } ) {
 
   return (
     <>
-      <MapContainer
+      <MapContainer id="map" style={{border:"20px solid rgb(255, 255, 255)", height: "500px"}}
         onclick={() => console.log("hello")}
         center={[0,0]}
         zoom={2}
         scrollWheelZoom={true}
-       
-      
       >
         <TileLayer
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'

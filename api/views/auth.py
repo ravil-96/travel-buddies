@@ -1,8 +1,10 @@
 from flask import request, jsonify, request
-
+import os
 from models import Users, create_user, auth_user, jwt_user, get_all_users, search_users
 from app import app
 import jwt
+
+secret = os.getenv("SECRET_EKEY")
 
 
 @app.route('/')
@@ -34,7 +36,7 @@ def login():
 def user(username):
     try:
         auth = request.headers["Authorization"].split()[1]
-        token = jwt.decode(auth, 'mynewsecret', algorithms=["HS256"])
+        token = jwt.decode(auth, secret, algorithms=["HS256"])
         if token["username"] == username:
             user = Users.query.filter_by(username=username).first()
             return jsonify({'msg': f'{token}', 'user' : f'{user}'}), 200
