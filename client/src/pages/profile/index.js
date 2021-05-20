@@ -17,7 +17,7 @@ function Profile() {
     dispatch(loadUserHolidays(id));
   }, []);
   return (  
-    <>
+    <div>
   <Header />  
   <NavBar />
   
@@ -39,7 +39,7 @@ function Profile() {
       </div>
     </div>
     <Footer />
-    </>
+    </div>
   );
 }
 
