@@ -7,6 +7,6 @@ describe("DropdownList", () => {
   });
 
   test("it a dropdown button", () => {
-    expect(screen.getByText(/Holiday Members/)).toBeInTheDocument()
+    expect(screen.getByText(/Holiday members/)).toBeInTheDocument()
   });
 });

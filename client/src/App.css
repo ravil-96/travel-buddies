@@ -1,14 +1,10 @@
-/* #profile-page{
-    margin: 1rem;
-    background-image: linear-gradient(#F1F8FE, #E0FBE8)
-  
-}
+
 
 .map-card-box{
     display: flex;
     flex-direction: row;
     align-items: center;
-    margin-top: 4rem
+    margin-top: 1.5rem;
 }
 
 .card-container-wrapper {
@@ -27,16 +23,10 @@ height: 300px;
  }
 
 .card{
-    background-color: lightgreen;
-    border: none;
-    border-radius: 0.75rem;
 }
 #new-holiday-button {
-    background-color: lightgreen;
     border: none;
-    position: fixed;
-    left: 2.3rem;
-    top: 31rem;
+
    
 }
 
@@ -44,4 +34,4 @@ height: 300px;
     position: fixed;
     top: 9rem;
     left: 5.5rem;
-} */
+} 

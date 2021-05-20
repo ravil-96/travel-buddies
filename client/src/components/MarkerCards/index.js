@@ -22,12 +22,12 @@ function MarkerCards() {
   const list = data.map((d, i) => {
     return (
         <Card role="listitem">
-          <Card.Body style={{display: 'flex', justifyContent: 'center'}}>
+          <Card.Body style={{padding: '1.5rem .1rem'}}>
             <div style={{padding: '0 1rem'}}>
-            <Card.Subtitle className="mb-2 text-muted">{d.title}</Card.Subtitle>
+            <Card.Title>{d.title}</Card.Title>
             <Card.Text>{d.desc}</Card.Text>
             </div>
-            <Button variant="danger" size="sm" style={{height: 'min-content'}} onClick={() => handleClick(d)}>
+            <Button variant="danger" size="sm" style={{height: 'min-content', position: 'absolute', top: '0', right: '0'}} onClick={() => handleClick(d)}>
               x
             </Button>
           </Card.Body>
