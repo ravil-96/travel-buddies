@@ -36,3 +36,10 @@ height: 400px;
 #dropdown-basic-search::after{
     display: none; 
  }
+
+@media only screen and (max-width: 768px) {
+    .map-card-box{
+        display: flex;
+        flex-direction: column;
+    }
+}

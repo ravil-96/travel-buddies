@@ -6,6 +6,7 @@ import { useParams } from "react-router-dom"
 import { useSocket } from '../../customHooks'
 import { clearMarkers, loadHoliday, clearChat, loadMembers, clearHoliday } from '../../actions'
 import ButtonToolbar from 'react-bootstrap/ButtonToolbar'
+
 import './style.css'
 
 function Holiday() {
@@ -62,7 +63,7 @@ function Holiday() {
             <img id="tape1" src="https://i.imgur.com/IHw5y43.png"/>
             <img id="tape2" src="https://i.imgur.com/IHw5y43.png"/>
           </div>
-          <CardContainer>
+          <CardContainer id="">
             <MarkerCards />
           </CardContainer>
         </div>

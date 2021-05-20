@@ -35,6 +35,7 @@ function Profile() {
         <div class="parent">
           <MyMap />
         </div>
+        
       </div>
     </div>
     <Footer />
