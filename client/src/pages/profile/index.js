@@ -20,6 +20,9 @@ function Profile() {
     <>
   <Header />  
   <NavBar />
+
+    <div id="profile-page">
+
     <div role="article" id="profile-page">
     
         <h4 id="profile-welcome-message">Hi {user}</h4>
@@ -31,7 +34,10 @@ function Profile() {
         <CardContainer>
           <HolidayCards />
         </CardContainer>
-        <MyMap />
+        <div class="parent">
+          <MyMap />
+        </div>
+        
       </div>
     </div>
     <Footer />

@@ -3,8 +3,10 @@ import './style.css'
 
 function Footer() {
   return (
-    <div role="footer">
-      <span id="footer"> Created by Chris, Ravil and Semhar </span>
+    <div id="page-container">
+      <div role="footer">
+        <span id="footer"> Created by Chris, Ravil and Semhar </span>
+      </div>
     </div>
   );
 }

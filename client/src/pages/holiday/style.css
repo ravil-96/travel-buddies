@@ -3,10 +3,6 @@
     margin-left: 1rem;
     margin-right: 1rem;
 }
-.map-card-box{
-    display: flex;
-    flex-direction: row;
-}
 
 .btn-toolbar{
     display: flex;
@@ -21,4 +17,32 @@
 }
 .toolbar > * {
     margin: 0 .25rem
+}
+
+.parent {
+    position: relative;
+    width: 1200px;
+    top: 0;
+    left: 0;
+}
+#tape1{
+    position: absolute;
+    top: -15px;
+    left: -17px;
+    height: 50px;
+    margin-right: 200px;
+}
+
+#tape2{
+    position: absolute;
+    top: 465px;
+    right: -15px;
+    height: 50px;
+}
+
+@media only screen and (max-width: 768px) {
+    #bootstrap-overrides .map-card-box{
+        display: flex;
+        flex-direction: column;
+    }
 }

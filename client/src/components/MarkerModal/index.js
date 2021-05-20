@@ -54,7 +54,7 @@ function MarkerModal({ show, handleClose, location, dTitle}) {
         </Form.Group>
 
         <Form.Group controlId="formBasicDesc">
-          <Form.Label>Title</Form.Label>
+          <Form.Label>Description</Form.Label>
           <Form.Control
             type="textarea"
             placeholder="Enter description"
