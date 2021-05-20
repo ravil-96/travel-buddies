@@ -1,16 +1,14 @@
 #navbar{
-    background-color: #3a99ff;
+    background-color: white;
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 100%;
     padding: .25rem 1rem;
+    box-shadow: 0 2px 4px rgb(0 0 0 / 10%), 0 8px 16px rgb(0 0 0 / 10%);
     
 }
-a{
-    color:black
-}
 a:hover{
-    text-decoration: none;
     cursor: pointer;
+    text-decoration: none;
 }

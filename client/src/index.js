@@ -17,6 +17,8 @@ import rootReducer from "./reducer";
 
 import App from "./App";
 
+import './index.css'
+
 const persistConfig = {
   key: "user",
   storage: storage,

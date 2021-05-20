@@ -7,6 +7,8 @@ import { fetchUsers, addHolidayMember } from "../../api"
 import { useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 
+import './style.css'
+
 function DropdownList( { items } ){
     const { id } = useParams()
     const mySocket = useSelector(state => state.user.socket)
@@ -48,7 +50,7 @@ export default function MapSearch() {
 
   return (
     <Dropdown style={{zIndex: '1001'}}>
-        <Dropdown.Toggle variant="success" id="dropdown-basic-search">Add someone +</Dropdown.Toggle>
+        <Dropdown.Toggle id="dropdown-basic-search">Add someone +</Dropdown.Toggle>
         <Dropdown.Menu>
         <Form onSubmit={(e) => {e.preventDefault()}}>
         <Form.Group controlId="formBasicSearch">
