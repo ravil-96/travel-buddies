@@ -24,7 +24,7 @@ function MarkerCards() {
   }
   const list = data.map((d, i) => {
     return (
-        <Card role="listitem" id="marker-list" style={{ width: '150px' }}>
+        <Card role="listitem" id="marker-list">
           <Card.Body style={{padding: '1.5rem .1rem'}}>
             <div style={{padding: '0 1rem'}}>
             <Card.Subtitle>{d.title}</Card.Subtitle>
@@ -37,7 +37,7 @@ function MarkerCards() {
         </Card>
     );
   });
-  return list;
+  return <div className="card-container-wrapper-h">{list}</div>
 }
 
 export default MarkerCards;
