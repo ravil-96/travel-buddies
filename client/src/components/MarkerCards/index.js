@@ -24,7 +24,7 @@ function MarkerCards() {
         <Card role="listitem">
           <Card.Body style={{padding: '1.5rem .1rem'}}>
             <div style={{padding: '0 1rem'}}>
-            <Card.Title>{d.title}</Card.Title>
+            <Card.Subtitle>{d.title}</Card.Subtitle>
             <Card.Text>{d.desc}</Card.Text>
             </div>
             <Button variant="danger" size="sm" style={{height: 'min-content', position: 'absolute', top: '0', right: '0'}} onClick={() => handleClick(d)}>

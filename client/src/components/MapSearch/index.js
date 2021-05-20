@@ -8,10 +8,8 @@ import Button from "react-bootstrap/Button";
 
 
 function DropdownList( { items, handleClick } ){
-  function handleHandleClick(data){
-    // console.log(data)
-  
-    handleClick([data.latitude, data.longitude])
+  function handleHandleClick(data){  
+    handleClick([data.latitude, data.longitude], data.name)
   }
   const list = items.map((d, i) => {
     return (

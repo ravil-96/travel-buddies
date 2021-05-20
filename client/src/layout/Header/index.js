@@ -5,11 +5,9 @@ import './style.css'
 const Header = () => {
     return (
       <>
-        <Link exact to="/" activeClassName="current">        
         <div id="header">
           <img src="https://i.imgur.com/KvFHW2R.png" />
         </div>
-        </Link>
       </>
     );
 }

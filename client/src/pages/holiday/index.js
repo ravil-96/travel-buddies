@@ -17,9 +17,11 @@ function Holiday() {
   const handleShow = () => setShow(true);
 
   const [markerLocation, setMarkerLocation] = useState(['',''])
-  function handleClick(location) {
-    console.log(location)
+  const [dTitle, setDTitle] = useState('')
+
+  function handleClick(location, dTitle) {
     setMarkerLocation(location)
+    setDTitle(dTitle)
     handleShow()
   }
 
@@ -51,6 +53,7 @@ function Holiday() {
           show={show}
           handleClose={handleClose}
           location={markerLocation}
+          dTitle={dTitle}
         />
    
         <div className="map-card-box">
