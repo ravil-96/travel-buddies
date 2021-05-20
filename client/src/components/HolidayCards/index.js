@@ -14,7 +14,7 @@ function HolidayCards() {
 
   const list = data.map((d) => {
     return (
-      <Card style={{ width: '100px' }}>
+      <Card>
         <Card.Body>
           <Card.Subtitle className="mb-2  text-muted">
             <Link to={`/holidays/${d.id}`}>{d.title}</Link>
@@ -23,7 +23,7 @@ function HolidayCards() {
       </Card>
     );
   });
-  return list ;
+  return <div className="card-container-wrapper">{list}</div>
 }
 
 export default HolidayCards;

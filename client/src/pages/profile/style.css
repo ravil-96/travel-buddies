@@ -16,30 +16,39 @@ h4 {
     margin-left: 2rem;
     padding-top: 1.5rem;}
 
-.parent {
-    position: relative;
-    width: 1200px;
-    top: 0;
-    left: 0;
-}
 
-.card-container-wrapper {
+.card-container-wrapper-h {
 height: 400px;
     overflow-y: auto;
     width: auto;
     max-width: 25%;
-    padding: 1.5rem;
+    padding: .5rem .0 .5rem .5rem;
     background-color: whitesmoke;
     border-radius: 1rem;
+}
+.card-container-wrapper > * {
+    margin: .5rem 0
+}
+.card-container-wrapper-h > * {
+    margin: .5rem 0
 }
 
 #dropdown-basic-search::after{
     display: none; 
  }
 
+ .map-card-box-p {
+     display: flex;
+      margin-top: 2rem;
+ }
+
 @media only screen and (max-width: 768px) {
     .map-card-box{
         display: flex;
-        flex-direction: column;
+        flex-direction: column !important;
+    }
+    .map-card-box-p{
+        display: flex;
+        flex-direction: column-reverse !important;
     }
 }
