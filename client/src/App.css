@@ -1,16 +1,37 @@
+
+
 .map-card-box{
     display: flex;
     flex-direction: row;
     align-items: center;
+    margin-top: 1.5rem;
 }
 
 .card-container-wrapper {
-    height: 400px;
+height: 300px;
     overflow-y: auto;
     width: auto;
-    max-width: 25%
+    max-width: 25%;
+    margin: 1.5rem;
+    padding: 2rem;
+    background-color: whitesmoke;
+    border-radius: 1rem;
 }
 
 #dropdown-basic-search::after{
     display: none; 
  }
+
+.card{
+}
+#new-holiday-button {
+    border: none;
+
+   
+}
+
+#holidays-title{
+    position: fixed;
+    top: 9rem;
+    left: 5.5rem;
+} 

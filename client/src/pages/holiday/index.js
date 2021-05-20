@@ -1,65 +1,71 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux"
-import { MapSearch, Weather, MyMap, MarkerModal, CardContainer, MarkerCards, ChatBox, AddMember, LogoutButton, MembersList } from "../../components";
-import { NavBar } from "../../layout"
+import { MapSearch, MyMap, MarkerModal, CardContainer, MarkerCards, ChatBox, AddMember, MembersList } from "../../components";
+import { Header, NavBar, Footer } from "../../layout"
 import { useParams } from "react-router-dom"
 import { useSocket } from '../../customHooks'
-import { clearMarkers, loadHoliday, clearChat, loadMembers } from '../../actions'
+import { clearMarkers, loadHoliday, clearChat, loadMembers, clearHoliday } from '../../actions'
 import ButtonToolbar from 'react-bootstrap/ButtonToolbar'
+import './style.css'
 
 function Holiday() {
   const { id } = useParams()
   useSocket(id)
-  const mySocket = useSelector(state => state.user.socket) 
 
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-    // the function to update state which is sent to the AddMarker componenet
-  // again this can be moved elsewhere as it becomes more complex
   const [markerLocation, setMarkerLocation] = useState(['',''])
-  function handleClick(location) {
-    console.log(location)
+  const [dTitle, setDTitle] = useState('')
+
+  function handleClick(location, dTitle) {
     setMarkerLocation(location)
+    setDTitle(dTitle)
     handleShow()
   }
 
   const dispatch = useDispatch()
   useEffect(() => {
-    dispatch(clearMarkers())
-    dispatch(clearChat())
-    console.log("reloaded")
-    dispatch(loadHoliday(id))
-    dispatch(loadMembers(id))
+    if (id) {
+      dispatch(clearMarkers())
+      dispatch(clearChat())
+      dispatch(clearHoliday())
+      dispatch(loadHoliday(id))
+      dispatch(loadMembers(id))
+    }
   },[id])
   
-
-
-
-
+  const holiday = useSelector(state => state.holiday)
   return (
     <>
-    <NavBar />
-      <Weather />
-      <MarkerModal
-        show={show}
-        handleClose={handleClose}
-        location={markerLocation}
-      />
-      <ButtonToolbar aria-label="Toolbar with button groups">
-        <MapSearch handleClick={handleClick} />
-        <AddMember />
-        <MembersList />
-      </ButtonToolbar> 
-      <div className="map-card-box">
-        <MyMap handleClick={handleClick}/>
-        <CardContainer>
-          <MarkerCards />
-        </CardContainer>
+      <NavBar />
+      <ButtonToolbar >
+      <h4 style={{padding: '0'}} id="profile-welcome-message">{holiday}</h4>     
+      <div className="toolbar">
+          <MapSearch handleClick={handleClick} />   
+          <AddMember />
+          <MembersList />
+          </div>
+        </ButtonToolbar>
+      <div id="holiday-page-container">
+        <MarkerModal
+          show={show}
+          handleClose={handleClose}
+          location={markerLocation}
+          dTitle={dTitle}
+        />
+   
+        <div className="map-card-box">
+          <MyMap handleClick={handleClick} />
+          <CardContainer>
+            <MarkerCards />
+          </CardContainer>
+        </div>
+
+        <ChatBox />
       </div>
-     
-      <ChatBox />
+      <Footer />
     </>
   );
 }

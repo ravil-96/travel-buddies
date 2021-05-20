@@ -4,13 +4,13 @@ const markersReducer = (state=initialState, action) => {
     switch(action.type) {
         case 'LOAD_MARKERS': {
             return [
-                ...action.payload.map(m => ({title: m.title, desc: m.desc, position: [m.position_lat, m.position_long]}))
+                ...action.payload.map(m => ({title: m.title, desc: m.desc, id: m.id, position: [m.position_lat, m.position_long]}))
             ]
         }
         case 'ADD_MARKER': {
             return [
                 ...state,
-                {position:action.payload.location, title:action.payload.title, desc:action.payload.desc}
+                {position:action.payload.location, title:action.payload.title, id: action.payload.id,  desc:action.payload.desc}
             ] 
         }    
         case 'CLEAR_MARKERS': {

@@ -2,6 +2,10 @@ import axios from 'axios'
 import { apiUrl } from '../../api'
 
 export const addMarker = (marker)=> ({type: 'ADD_MARKER', payload: marker}) 
+export const deleteMarker = (marker)=> ({type: 'DELETE_MARKER', payload: marker}) 
+
+export const clearHoliday = ()=> ({type: 'CLEAR_HOLIDAY'}) 
+
 
 // export const deleteMarker = (marker) => ({type: 'DELETE_MARKER', payload: marker})
 
@@ -41,10 +45,10 @@ export const loadHoliday = (id) => {
                 type: 'LOAD_MARKERS',
                 payload: markers
             })
-            // dispatch({
-            //     type: 'LOAD_HOLIDAY_INFO',
-            //     payload: holiday
-            // })
+            dispatch({
+                type: 'LOAD_HOLIDAY',
+                payload: holiday.title
+            })
         } catch (err) {
             dispatch({
                 type: 'SET_ERROR',

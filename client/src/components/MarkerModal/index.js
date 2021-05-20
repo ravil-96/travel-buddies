@@ -1,17 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux"
 import { useParams } from "react-router-dom"
-import { addMarker } from "../../actions"
 import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { sendMarker } from "../../api"
 
-function MarkerModal({ show, handleClose, location }) {
-  const dispatch = useDispatch()
+function MarkerModal({ show, handleClose, location, dTitle}) {
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
   const { id } = useParams()
+
+  useEffect(() => {
+    setTitle(dTitle)
+  },[dTitle])
 
   const handleTitleEntry = (e) => {
     setTitle(e.target.value);
@@ -21,10 +23,12 @@ function MarkerModal({ show, handleClose, location }) {
   };
 
   const mySocket = useSelector(state => state.user.socket)
-  function handleCreate(e){
+  async function handleCreate(e){
     e.preventDefault()
-    mySocket.emit("add marker", {room: id, marker: {location, title, desc}});
-    sendMarker({room: id, position_lat: location[0], position_long: location[1], title: title, desc: desc})
+    const marker = await sendMarker({room: id, position_lat: location[0], position_long: location[1], title: title, desc: desc})
+    mySocket.emit("add marker", {room: id, marker: {location, title, desc, id: marker.id}});
+    setTitle('')
+    setDTitle('')
     handleClose()
   }
 
@@ -35,7 +39,7 @@ function MarkerModal({ show, handleClose, location }) {
         <Modal.Title>New Marker</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        Create a new marker at [{location[0]}, {location[1]}]
+        Create a new marker
 
         <Form id="markerForm" onSubmit={(e) => handleCreate(e)}>
 
@@ -46,6 +50,7 @@ function MarkerModal({ show, handleClose, location }) {
             type="text"
             placeholder="Enter title"
             onChange={handleTitleEntry}
+            value={title}
           />
         </Form.Group>
 

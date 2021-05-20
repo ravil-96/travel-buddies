@@ -1,8 +1,9 @@
 import React from "react";
+import './style.css'
 
 function Footer() {
   return (
-    <div>
+    <div role="footer">
       <span id="footer"> Created by Chris, Ravil and Semhar </span>
     </div>
   );

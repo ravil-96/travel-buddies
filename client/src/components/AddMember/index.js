@@ -4,13 +4,17 @@ import ListGroup from  "react-bootstrap/ListGroup";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { fetchUsers, addHolidayMember } from "../../api"
+import { useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 
 function DropdownList( { items } ){
     const { id } = useParams()
+    const mySocket = useSelector(state => state.user.socket)
 
-  function handleHandleClick(data){
-    addHolidayMember({id: data.id, user_id: id})
+  async function handleHandleClick(data){
+    const member = await addHolidayMember({id: data.id, user_id: id})
+    if (member.data == 'success')
+      {mySocket.emit("add member", {room: id, username: data.username})}
   }
   const list = items.map((d, i) => {
     return (
@@ -44,7 +48,7 @@ export default function MapSearch() {
 
   return (
     <Dropdown style={{zIndex: '1001'}}>
-        <Dropdown.Toggle variant="success" id="dropdown-basic-search">Add user +</Dropdown.Toggle>
+        <Dropdown.Toggle variant="success" id="dropdown-basic-search">Add someone +</Dropdown.Toggle>
         <Dropdown.Menu>
         <Form onSubmit={(e) => {e.preventDefault()}}>
         <Form.Group controlId="formBasicSearch">

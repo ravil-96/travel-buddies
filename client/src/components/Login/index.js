@@ -39,7 +39,7 @@ const handlePasswordEntry = (e) => {
 
   return (
     <>
-    <div>
+    <div role="Login form">
       <Form onSubmit={handleSubmit}>
         <Form.Group controlId="formBasicUsername">
           <Form.Label>Username</Form.Label>
