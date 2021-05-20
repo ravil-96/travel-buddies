@@ -2,21 +2,19 @@ import { apiUrl } from '.'
 import axios from 'axios';
 
 export const sendMarker = async (marker) => {
-        try {
-            const { data } = await axios.post(`${apiUrl}/maps/marker`, 
-            {
-                title: marker.title,
-                desc: marker.desc,
-                position_lat: marker.position_lat,
-                position_long: marker.position_long,
-                holiday_id: marker.room
-            }
-            )
-            return data
-        } catch (err) {
-            console.warn(err.message)
-        }
-}
+  try {
+    const { data } = await axios.post(`${apiUrl}/maps/marker`, {
+      title: marker.title,
+      desc: marker.desc,
+      position_lat: marker.position_lat,
+      position_long: marker.position_long,
+      holiday_id: marker.room,
+    });
+    return data;
+  } catch (err) {
+    console.warn(err.message);
+  }
+};
 
 export const deleteMarker = async (mi) => {
     try {

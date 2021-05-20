@@ -12,7 +12,7 @@ const membersReducer = (state=initialState, action) => {
             return {creator: state.creator, members: state.members.concat({username: action.payload}),  currentMembers: state.currentMembers}
         }
         case 'CLEAR_MEMBERS': {
-            return {creator: {}, members: []} 
+            return {creator: {}, members: [], currentMembers: []} 
         }
         default:
             return state;
