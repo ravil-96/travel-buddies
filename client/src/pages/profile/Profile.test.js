@@ -2,9 +2,9 @@ import Profile from ".";
 import { render, screen } from "@testing-library/react";
 
 describe("Profile", () => {
-  test("it renders a div", () => {
+  test("it renders a page container", () => {
     renderWithReduxProvider(<Profile />);
-    const div = screen.getByRole("ProfilePage");
-    expect(div).toBeInTheDocument();
+    const page = screen.getByRole("article");
+    expect(page).toBeInTheDocument();
   });
 });

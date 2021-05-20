@@ -6,7 +6,7 @@ import './style.css'
 
 function Home(){
     return ( 
-    <div>
+    <div role="article">
         <Header />  
         <div class="row"> 
             <div class="column"><img src="https://i.imgur.com/O3N7N6x.png"/></div>

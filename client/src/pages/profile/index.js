@@ -19,7 +19,7 @@ function Profile() {
   return (  
     <>
   <NavBar />
-    <div id="profile-page">
+    <div role="article" id="profile-page">
     
         <h4 style={{display: 'inline-block', marginRight: '.5rem'}} id="profile-welcome-message">Hi {user}</h4>
         <NewHolidayButton />
