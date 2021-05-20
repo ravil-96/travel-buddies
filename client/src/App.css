@@ -22,12 +22,8 @@ height: 300px;
     display: none; 
  }
 
-.card{
-}
 #new-holiday-button {
-    border: none;
-
-   
+    border: none;  
 }
 
 #holidays-title{

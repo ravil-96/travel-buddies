@@ -6,6 +6,8 @@ import { sendHoliday } from "../../api"
 import { useSelector } from "react-redux"
 import { useHistory } from "react-router-dom"
 
+import './style.css'
+
 function NewHolidayButton() {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
@@ -27,7 +29,7 @@ function NewHolidayButton() {
   
   return (
     <>
-      <Button variant="success" onClick={handleShow} id="new-holiday-button">Create new holiday</Button>
+      <Button id="new-holiday" onClick={handleShow}>Create new holiday</Button>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>New Holiday</Modal.Title>
@@ -47,7 +49,7 @@ function NewHolidayButton() {
           </Form>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="success" type="submit" form="markerForm">
+          <Button id="create" type="submit" form="markerForm">
             Create
           </Button>
           <Button variant="secondary" onClick={handleClose}>

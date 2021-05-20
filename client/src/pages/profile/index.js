@@ -18,10 +18,11 @@ function Profile() {
   }, []);
   return (  
     <>
+  <Header />  
   <NavBar />
     <div role="article" id="profile-page">
     
-        <h4 style={{display: 'inline-block', marginRight: '.5rem'}} id="profile-welcome-message">Hi {user}</h4>
+        <h4 id="profile-welcome-message">Hi {user}</h4>
         <NewHolidayButton />
       
       
