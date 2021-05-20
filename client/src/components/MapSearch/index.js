@@ -27,7 +27,7 @@ export default function MapSearch( { handleClick }) {
   const [location, setLocation] = useState();
   const [locationData, setLocationData] = useState([])
 
-  const apikey = "d2acbb92755fc59c7e8cebb0e4dc2282";
+  const apikey = "2c4949f89d834d48f63e15ee66bace22";
 
   function handleInput(e) {
     // console.log(e.target.value);
