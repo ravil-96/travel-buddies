@@ -1,4 +1,4 @@
-# Travel Buddies <img src="https://i.imgur.com/KvFHW2R.png">
+<img src="https://i.imgur.com/KvFHW2R.png">
 ## Get inspired about travelling with your friends again
 
 https://holiday-hub.netlify.app/
