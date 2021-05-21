@@ -81,5 +81,9 @@ Main stages of the process were:
 - create Figma design for app and all the future pages
 - create a mood board on Ayoa to unify our app style
 
-![image](https://i.imgur.com/PHJcEi8.png)
-<img src="https://i.imgur.com/Yee45mc.png" width="300"> <img src="https://i.imgur.com/Yee45mc.png" width="300"> 
+![image](https://i.imgur.com/73p629F.png)
+
+![image](https://i.imgur.com/Sesr4eO.png)
+Component Map
+
+<img src="https://i.imgur.com/UozIQoG.png" width="300"> <img src="https://i.imgur.com/Yee45mc.png" width="300"> 
