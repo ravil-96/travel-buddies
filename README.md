@@ -14,9 +14,6 @@ Create an app with mapping functionality that would allow users to interact in r
 
 # Installation and usage of the website
 
-### Using our deployed website link
-[![Netlify Status](https://api.netlify.com/api/v1/badges/cf436e4b-832d-47f0-9f30-ccab694ba52c/deploy-status)](https://app.netlify.com/sites/holiday-hub/deploys)
-
 For those of you who would like to get involved with code
 ### Installation
 
