@@ -60,3 +60,26 @@ If you are getting error messages about `wait-for-it.sh` file, (particulalrly Ma
 - `cd api` and run `ls -lah`. If there is no x at the end:
 	- run `chmod +x "./wait-for-it.sh"` 
 	- check your file by running `ls -lah` again.
+
+## Technologies used
+
+1. React
+2. Redux
+3. React Leaflet (mapping technology)
+4. SQLAlchemy
+5. Websockets
+6. Docker Compose
+7. React-Bootstrap front-end framework
+8. Flask back-end framework (Python)
+9. Axios for client network requests
+
+## Design Processes
+
+Main stages of the process were:
+1. Initial brainstorming:
+- with the group gather together online to create mind map of all the initial ideas for the app
+- filter ideas base on everyone's most and leat favorite ideas
+- further scrutinise ideas base on what was possible to achive in a week
+- filter some functionality of the app using MoSCoW method (Must Haves, Should Haves, Could Haves and Would Haves)
+- create Figma design for app and all the future pages
+- create a mood board on Ayoa to unify our app style
