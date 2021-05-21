@@ -52,7 +52,7 @@ For those of you who would like to get involved with code
 6) to run coverage
 - `npm run coverage`
 
-## troubleshooting
+#### troubleshooting
 If you are getting error messages about `wait-for-it.sh` file, (particulalrly Mac users) you'll need to check that the file has the right permissions (it should have an x at the end).
 - `cd api` and run `ls -lah`. If there is no x at the end:
 	- run `chmod +x "./wait-for-it.sh"` 
@@ -80,3 +80,6 @@ Main stages of the process were:
 - filter some functionality of the app using MoSCoW method (Must Haves, Should Haves, Could Haves and Would Haves)
 - create Figma design for app and all the future pages
 - create a mood board on Ayoa to unify our app style
+
+![image](https://i.imgur.com/PHJcEi8.png)
+<img src="https://i.imgur.com/Yee45mc.png" width="300"> <img src="https://i.imgur.com/84u2eS9.png" width="300"> 
