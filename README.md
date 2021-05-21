@@ -3,9 +3,6 @@
 ## Get inspired about travelling with your friends again
 https://holiday-hub.netlify.app/
 
-## website
-https://travel-buddies.netlify.app/ 
-
 ## Client
 
 Dear User,
