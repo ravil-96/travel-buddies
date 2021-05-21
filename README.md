@@ -17,25 +17,42 @@ Create an app with mapping functionality that would allow users to interact in r
 ### Using our deployed website link
 [![Netlify Status](https://api.netlify.com/api/v1/badges/cf436e4b-832d-47f0-9f30-ccab694ba52c/deploy-status)](https://app.netlify.com/sites/holiday-hub/deploys)
 
+For those of you who would like to get involved with code
+### Installation
+- Clone or download the repository
 
-## usage
-- start the backend processes
-    - `docker compose build` (you will need to run this if you make changes to Dockerfiles or want to install new modules)
-    - `docker compose up`
-        - starts pg database called myDb, interact with `bash _scripts/psql`
-        - starts API at `localhost:5000`
-        - starts Socket server at `localhost:3000`
-    - run `docker exec -it travel-buddies_api_1 sh` to start an interactive shell for API
-        - run `flask db init`
-        - run `flask db migrate`
-        - run `flask db upgrade`
+### Usage
 
-- start client server
-    - `npm run dev`
-        - access at `localhost:8080` 
+#### To Run the Server Processes Locally
+1) to start the backend processes:
+- docker compose -f docker-compose-dev.yaml up
+3) set up the database and models with: 
+- docker exec -it dev_api sh
+- flask db init
+- flask db migrate
+- flask db upgrade
+(if you get an error run commands again starting with flask db stamp head)
+3) to run test server:
+- docker compose -f docker-compose.yaml -f docker-compose-dev.yaml up docker exec -it test_api sh
+4) to start tests:
+- run pytest
+5) to run coverage:
+- run pytest --cov-report term-missing --cov=.
 
-- end docker processes with `docker compose down` or `ctrl-c` or `bash _scripts/teardown.sh` 
+* to access docker databases
+- docker exec -it dev_db psql myDb -U user
+- docker exec -it test_db psql testDb -U user
 
+#### To Run the Client Locally
+1) navigate to the client folder;
+2) in client/src/api/index.js:
+	- comment out production server urls and use local
+3) npm install
+4) npm run dev
+5) to test client:
+- npm run test
+6) to run coverage
+- npm run coverage
 
 ## troubleshooting
 If you are getting error messages about `wait-for-it.sh` file, particulalrly Mac users you'll need to check the file has the right permissioins (it should have an x at the end).
