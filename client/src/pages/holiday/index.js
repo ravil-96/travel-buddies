@@ -60,8 +60,8 @@ function Holiday() {
         <div className="map-card-box">
           <div className="parent">
             <MyMap handleClick={handleClick} />
-            <img id="tape1" src="https://i.imgur.com/IHw5y43.png"/>
-            <img id="tape2" src="https://i.imgur.com/IHw5y43.png"/>
+            {/* <img id="tape1" src="https://i.imgur.com/IHw5y43.png"/>
+            <img id="tape2" src="https://i.imgur.com/IHw5y43.png"/> */}
           </div>
           <CardContainer id="">
             <MarkerCards />

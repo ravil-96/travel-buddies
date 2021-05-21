@@ -20,10 +20,8 @@
 }
 
 .parent {
-    position: relative;
-    width: 1200px;
-    top: 0;
-    left: 0;
+    width: 100%;
+
 }
 #tape1{
     position: absolute;

@@ -27,16 +27,18 @@ function Profile() {
         <NewHolidayButton />
       
       
-      <div className="map-card-box">
+      <div className="map-card-box-p">
 
         <CardContainer>
           <HolidayCards />
         </CardContainer>
+
         <div class="parent">
           <MyMap />
         </div>
         
       </div>
+
     </div>
     <Footer />
     </div>
