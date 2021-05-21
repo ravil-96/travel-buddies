@@ -82,4 +82,4 @@ Main stages of the process were:
 - create a mood board on Ayoa to unify our app style
 
 ![image](https://i.imgur.com/PHJcEi8.png)
-<img src="https://i.imgur.com/Yee45mc.png" width="300"> <img src="https://i.imgur.com/84u2eS9.png" width="300"> 
+<img src="https://i.imgur.com/Yee45mc.png" width="300"> <img src="https://i.imgur.com/Yee45mc.png" width="300"> 
